@@ -8,4 +8,6 @@ part 'base_model.g.dart';
 abstract class BaseModel {
   @BuiltValueField(wireName: 'httpCode')
   int? get httpCode;
+  @BuiltValueField(wireName: 'message')
+  String? get message;
 }

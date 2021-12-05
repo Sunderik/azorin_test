@@ -1,12 +1,4 @@
-export 'package:tecon_task/core/domain/reducers/app_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/address_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/events_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/problems_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/projects_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/statistics_global_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/statistics_system_problems_global_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/tasks_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/team_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/user_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/domain_reducers/workload_reducer.dart';
-export 'package:tecon_task/core/domain/reducers/reduce_builder.dart';
+export 'package:azorin_test/core/domain/reducers/app_reducer.dart';
+export 'package:azorin_test/core/domain/reducers/domain_reducers/users_reducer.dart';
+
+export 'package:azorin_test/core/domain/reducers/reduce_builder.dart';

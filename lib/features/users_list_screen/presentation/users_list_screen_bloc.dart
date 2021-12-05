@@ -1,0 +1,119 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:azorin_test/features/users_list_screen/domain/domain.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:azorin_test/core/core.dart';
+import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/features/navigation/domain/app_route.dart';
+import 'package:azorin_test/features/navigation/navigation.dart';
+
+class UsersListScreenBloc extends BaseBloc {
+  UsersListScreenBloc();
+
+  /// Возвращает коллекцию исполнителей.
+  BuiltList<User>? get users => store?.state.usersState.users.toBuiltList();
+
+  /// Контроллер статуса экрана.
+  late StreamController<ScreenStatusEnum> usersListScreenStatusController;
+
+  /// Контроллер команды проекта.
+  late StreamController<BuiltList<User>> usersController;
+
+  // region Private Fields
+  /// Подписка на значение поля [UsersListScreenState.usersListScreenStatus].
+  StreamSubscription<ScreenStatusEnum?>? _usersListScreenStatusSubscription;
+
+  /// Контроллер пользователей.
+  late StreamSubscription<BuiltList<User>?> _usersSubscription;
+
+  // endregion
+
+  @override
+  void init() {
+    super.init();
+
+    usersController = StreamController<BuiltList<User>>.broadcast();
+
+    usersListScreenStatusController = StreamController<ScreenStatusEnum>();
+
+    // Получаем количество пользователей.
+    final _usersCount = users?.length ?? 0;
+
+    // Обновляем список исполнителей, если количество исполнителей меньше 2.
+    if (_usersCount < 2) refreshUsersList();
+
+    _usersSubscription = store!.nextSubstate((AppState state) => state.usersState.users).listen((_) {
+      _sinkUsersList();
+    });
+
+    _usersListScreenStatusSubscription =
+        store?.nextSubstate((AppState state) => state.usersListState.usersListScreenStatus).listen((status) {
+      if (status != null) {
+        switch (status) {
+          case ScreenStatusEnum.wait:
+            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.init);
+            break;
+          case ScreenStatusEnum.fail:
+            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.init);
+            break;
+          default:
+            usersListScreenStatusController.sink.add(status);
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    usersController.close();
+    usersListScreenStatusController.close();
+    _usersListScreenStatusSubscription?.cancel();
+    _usersSubscription.cancel();
+  }
+
+  // region Public Methods
+  /// Обновление списка пользователй.
+  void refreshUsersList() {
+    // Меняем статус экрана на загрузку.
+    actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.loading);
+    // Выполяем запрос пользователей.
+    actions.usersScreen.usersRequest(null);
+    _sinkUsersList();
+  }
+
+  /// Переход на окно "Информацию о пользователе".
+  ///
+  /// [user] - объект исполнителя, на информацию о котором выполяется переход.
+  void openUserInfo(User user) {
+    // logger.i('Opening ExecutorInfo: ${executor.guid}');
+    // final teamExecutorId = executor.guid;
+    // final projectGuid = this.projectGuid;
+    // final bundle = {'teamExecutorId': teamExecutorId, 'projectGuid': projectGuid};
+    // actions.navigation.routeTo(
+    //   AppRoute((builder) =>
+    //   builder
+    //     ..route = Routes.memberDetails
+    //     ..navigationType = NavigationType.push
+    //     ..transitionType = TransitionType.rightSlide
+    //     ..bundle = bundle),
+    // );
+  }
+
+// endregion
+
+  // region Private Methods
+  /// Отправить в контроллер команды обновленых участников проекта.
+  void _sinkUsersList() {
+    final users = this.users;
+    if (users == null) {
+      return;
+    }
+    usersController.sink.add(users);
+  }
+// endregion
+}

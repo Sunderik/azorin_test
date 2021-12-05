@@ -1,4 +1,7 @@
-export 'package:tecon_task/core/domain/actions/actions.dart';
-export 'package:tecon_task/core/domain/global_state/states.dart';
-export 'package:tecon_task/core/domain/objects/objects.dart';
-export 'package:tecon_task/core/domain/reducers/reducers.dart';
+export 'actions/actions.dart';
+export 'reducers/reducers.dart';
+export 'serializers/serializers.dart';
+export 'global_state/states.dart';
+export 'models/models.dart';
+export 'enums/enums.dart';
+
