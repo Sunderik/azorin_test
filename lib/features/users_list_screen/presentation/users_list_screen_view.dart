@@ -45,10 +45,10 @@ class _UsersListScreenViewState extends State<UsersListScreenView> {
                       final team = bloc.users;
                       if (team != null && team.isNotEmpty && status != ScreenStatusEnum.loading) {
                         return const TeamListContent();
-                      } else if (team != null && team.isEmpty && status != ScreenStatusEnum.loading) {
+                      } else if (team != null && team.isEmpty && status != ScreenStatusEnum.wait) {
                         return Center(
                           child: Text(
-                            'В проекте нет участников',
+                            'Пользователей нет',
                             style: TextStyle(color: Theme.of(context).backgroundColor),
                           ),
                         );

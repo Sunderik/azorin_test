@@ -17,7 +17,8 @@ abstract class Address implements Built<Address, AddressBuilder> {
   String? get city;
 
   ///
-  String? get zipcode;
+  @BuiltValueField(wireName: 'zipcode')
+  String? get zipCode;
 
   ///
   @BuiltValueField(wireName: 'geo')

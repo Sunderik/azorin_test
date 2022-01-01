@@ -1,7 +1,8 @@
-import 'package:azorin_test/core/domain/models/address.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:azorin_test/core/domain/serializers/serializers.dart';
+
+import 'models.dart';
 
 part 'user.g.dart';
 
@@ -22,6 +23,9 @@ abstract class User implements Built<User, UserBuilder> {
 
   ///
   Address? get address;
+
+  ///
+  Company get company;
 
   ///
   String? get phone;

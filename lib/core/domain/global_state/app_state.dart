@@ -19,7 +19,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..appTheme = AppTheme.light
       ..navigationState = NavigationState((builder) => builder).toBuilder()
       ..usersState = UsersState().toBuilder()
-      ..usersListState = UsersListScreenState().toBuilder());
+      ..usersListState = UsersListScreenState().toBuilder()
+      ..userDetailsState = UserDetailsState().toBuilder()
+    );
   }
 
   AppTheme get appTheme;
@@ -29,6 +31,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   UsersState get usersState;
 
   UsersListScreenState get usersListState;
+
+  UserDetailsState get userDetailsState;
 
   Map<String, dynamic>? toJson() {
     return mainSerializers.serializeWith(AppState.serializer, this) as Map<String, dynamic>;

@@ -55,10 +55,10 @@ class UsersListScreenBloc extends BaseBloc {
       if (status != null) {
         switch (status) {
           case ScreenStatusEnum.wait:
-            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.init);
+            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.wait);
             break;
           case ScreenStatusEnum.fail:
-            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.init);
+            store?.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.fail);
             break;
           default:
             usersListScreenStatusController.sink.add(status);
@@ -90,18 +90,13 @@ class UsersListScreenBloc extends BaseBloc {
   ///
   /// [user] - объект исполнителя, на информацию о котором выполяется переход.
   void openUserInfo(User user) {
-    // logger.i('Opening ExecutorInfo: ${executor.guid}');
-    // final teamExecutorId = executor.guid;
-    // final projectGuid = this.projectGuid;
-    // final bundle = {'teamExecutorId': teamExecutorId, 'projectGuid': projectGuid};
-    // actions.navigation.routeTo(
-    //   AppRoute((builder) =>
-    //   builder
-    //     ..route = Routes.memberDetails
-    //     ..navigationType = NavigationType.push
-    //     ..transitionType = TransitionType.rightSlide
-    //     ..bundle = bundle),
-    // );
+    logger.i('Opening UserDetails for user with id:${user.id}');
+    final bundle = {'userId': user.id};
+    actions.navigation.routeTo(
+      AppRoute((builder) => builder
+        ..route = Routes.userDetails
+        ..bundle = bundle),
+    );
   }
 
 // endregion
