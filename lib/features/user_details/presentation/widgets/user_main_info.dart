@@ -1,11 +1,19 @@
+import 'package:azorin_test/core/library/dialogs/dialogs.dart';
 import 'package:azorin_test/features/user_details/presentation/widgets/info_row.dart';
-import 'package:azorin_test/features/users_list_screen/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 
+///
 class UserMainInfo extends StatelessWidget {
+  ///
   final String name;
+
+  ///
   final String? phone;
+
+  ///
   final String? email;
+
+  ///
   final String? site;
 
   const UserMainInfo({Key? key, required this.name, this.phone, this.email, this.site}) : super(key: key);

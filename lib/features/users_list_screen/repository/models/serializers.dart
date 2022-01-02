@@ -3,10 +3,10 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:azorin_test/core/core.dart';
 
-import 'models.dart';
+import '_models.dart';
 
 part 'serializers.g.dart';
-
+///
 @SerializersFor([
   UsersResponse,
 ])

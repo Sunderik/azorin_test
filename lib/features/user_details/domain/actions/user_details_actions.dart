@@ -1,12 +1,14 @@
 import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
-import 'package:azorin_test/features/user_details/repository/models/models.dart';
+import 'package:azorin_test/features/user_details/repository/models/_models.dart';
 
 part 'user_details_actions.g.dart';
 
+///
 abstract class UserDetailsActions extends ReduxActions {
   UserDetailsActions._();
 
+  ///
   factory UserDetailsActions() => _$UserDetailsActions();
 
   /// Action на запись выбранного пользователя в стейт окна
@@ -27,5 +29,6 @@ abstract class UserDetailsActions extends ReduxActions {
   /// Action определения статуса экрана в [UserDetailsState.screenStatus].
   late ActionDispatcher<ScreenStatusEnum> setUserDetailsScreenStatus;
 
+  ///
   late ActionDispatcher<void> clearUserDetails;
 }

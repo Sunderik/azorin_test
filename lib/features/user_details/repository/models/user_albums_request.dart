@@ -1,11 +1,12 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'models.dart';
+import '_models.dart';
 
 part 'user_albums_request.g.dart';
-
+///
 abstract class UserAlbumsRequest implements Built<UserAlbumsRequest, UserAlbumsRequestBuilder> {
+ //
   String? get guid;
 
   String? get factoryGuid;

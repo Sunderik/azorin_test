@@ -19,7 +19,9 @@ class ScreenStatusEnum extends EnumClass {
 
   const ScreenStatusEnum._(String name) : super(name);
 
+  ///
   static BuiltSet<ScreenStatusEnum> get values => _$screenStatusEnumValues;
 
+  ///
   static ScreenStatusEnum valueOf(String name) => _$screenStatusEnumValueOf(name);
 }

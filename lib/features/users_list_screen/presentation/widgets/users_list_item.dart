@@ -1,6 +1,6 @@
 import 'package:azorin_test/core/core.dart';
 import 'package:flutter/material.dart';
-
+///
 class TeamListItem extends StatelessWidget {
   /// Объект исполнителя.
   final User user;
@@ -15,7 +15,7 @@ class TeamListItem extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: ConstrainedBox(
-          constraints: BoxConstraints.tightFor(width: 28, height: 28),
+          constraints: const BoxConstraints.tightFor(width: 28, height: 28),
           child: Icon(
             Icons.person,
             color: Colors.grey[700],

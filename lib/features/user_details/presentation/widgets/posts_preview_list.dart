@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+///
 class PostPreviewList extends StatelessWidget {
   const PostPreviewList({Key? key}) : super(key: key);
 
@@ -40,6 +41,7 @@ class PostPreviewList extends StatelessWidget {
         });
   }
 
+  ///
   Widget _getCardHeader() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22.0),
@@ -61,6 +63,7 @@ class PostPreviewList extends StatelessWidget {
     );
   }
 
+  ///
   Widget _getCardContent(List<Post> posts) {
     List<Widget> widgets = posts.map((post) {
       return Builder(
@@ -76,7 +79,7 @@ class PostPreviewList extends StatelessWidget {
       );
     }).toList();
     return CarouselSlider(
-      options: CarouselOptions(height: 100.0,enableInfiniteScroll: false),
+      options: CarouselOptions(height: 100.0, enableInfiniteScroll: false),
       items: widgets,
     );
   }

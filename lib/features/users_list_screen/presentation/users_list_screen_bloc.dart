@@ -1,16 +1,13 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
+import 'package:built_collection/built_collection.dart';
 
 import 'package:azorin_test/features/users_list_screen/domain/domain.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/logger/logger.dart';
 import 'package:azorin_test/features/navigation/domain/app_route.dart';
 import 'package:azorin_test/features/navigation/navigation.dart';
 
+///
 class UsersListScreenBloc extends BaseBloc {
   UsersListScreenBloc();
 
@@ -23,14 +20,11 @@ class UsersListScreenBloc extends BaseBloc {
   /// Контроллер команды проекта.
   late StreamController<BuiltList<User>> usersController;
 
-  // region Private Fields
   /// Подписка на значение поля [UsersListScreenState.usersListScreenStatus].
   StreamSubscription<ScreenStatusEnum?>? _usersListScreenStatusSubscription;
 
   /// Контроллер пользователей.
   late StreamSubscription<BuiltList<User>?> _usersSubscription;
-
-  // endregion
 
   @override
   void init() {
@@ -76,7 +70,6 @@ class UsersListScreenBloc extends BaseBloc {
     _usersSubscription.cancel();
   }
 
-  // region Public Methods
   /// Обновление списка пользователй.
   void refreshUsersList() {
     // Меняем статус экрана на загрузку.
@@ -99,9 +92,6 @@ class UsersListScreenBloc extends BaseBloc {
     );
   }
 
-// endregion
-
-  // region Private Methods
   /// Отправить в контроллер команды обновленых участников проекта.
   void _sinkUsersList() {
     final users = this.users;
@@ -110,5 +100,4 @@ class UsersListScreenBloc extends BaseBloc {
     }
     usersController.sink.add(users);
   }
-// endregion
 }

@@ -1,13 +1,11 @@
-import 'package:azorin_test/features/user_details/presentation/widgets/posts/posts_preview_list.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/user_adress_info.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/user_company_info.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/user_main_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/user_details/presentation/presentation.dart';
+import 'package:azorin_test/features/user_details/presentation/widgets/_widgets.dart';
 
+///
 class UserDetailsView extends StatefulWidget {
   const UserDetailsView({Key? key}) : super(key: key);
 
@@ -15,8 +13,12 @@ class UserDetailsView extends StatefulWidget {
   _UserDetailsViewState createState() => _UserDetailsViewState();
 }
 
+///
 class _UserDetailsViewState extends State<UserDetailsView> {
+  ///
   UserDetailsBloc get bloc => Provider.of<UserDetailsBloc>(context, listen: false);
+
+  ///
   static const String _loadingError = 'Ошибка загрузки';
 
   @override

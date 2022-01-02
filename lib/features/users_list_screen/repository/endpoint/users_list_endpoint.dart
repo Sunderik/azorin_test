@@ -1,5 +1,5 @@
 import 'package:azorin_test/core/core.dart';
-
+///
 class UsersListEndpoint implements Endpoint {
   UsersListEndpoint();
 

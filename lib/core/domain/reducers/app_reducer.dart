@@ -5,7 +5,7 @@ import 'package:azorin_test/features/users_list_screen/domain/users_list_state.d
 import 'package:built_redux/built_redux.dart';
 
 import '../domain.dart';
-
+///
 NestedReducerBuilder<AppState, AppStateBuilder, AppState, AppStateBuilder> createAppStateReducer() {
   return NestedReducerBuilder<AppState, AppStateBuilder, AppState, AppStateBuilder>(
     (state) => state,
@@ -14,7 +14,7 @@ NestedReducerBuilder<AppState, AppStateBuilder, AppState, AppStateBuilder> creat
     ..add(AppActionsNames.clearState, _clearAppState)
     ..add(AppActionsNames.setTheme, _setTheme);
 }
-
+///
 void _clearAppState(AppState state, Action<void> action, AppStateBuilder builder) {
   logger.i("CLEARING STATE");
   builder
@@ -23,7 +23,7 @@ void _clearAppState(AppState state, Action<void> action, AppStateBuilder builder
     ..usersListState = UsersListScreenState().toBuilder()
     ..userDetailsState = UserDetailsState().toBuilder();
 }
-
+///
 void _setTheme(AppState state, Action<void> action, AppStateBuilder builder) {
   logger.i("SETTING THEME");
 }

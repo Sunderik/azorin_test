@@ -2,9 +2,10 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/user_details/domain/domain.dart';
-import 'package:azorin_test/features/user_details/repository/models/models.dart';
+import 'package:azorin_test/features/user_details/repository/models/_models.dart';
 import 'package:collection/collection.dart';
 
+///
 MiddlewareBuilder<AppState, AppStateBuilder, AppActions> userDetailsMiddleware() {
   return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
     ..add(UserDetailsActionsNames.userPostsRequest, _userPostsRequest)
@@ -29,7 +30,6 @@ void _setUserPostsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> 
   //переписываем полльзователя добавляя ему посты
   user = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
   api.actions.userScreen.setUserDetails(user!);
-
 }
 
 /// Запрос на изменение статуса пользователя.

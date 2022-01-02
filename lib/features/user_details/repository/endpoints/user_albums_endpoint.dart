@@ -1,12 +1,13 @@
 import 'package:azorin_test/core/core.dart';
-
+///
 class UserAlbumsEndpoint implements Endpoint {
-  final int? userID;
+  ///
+  final int? userId;
 
-  UserAlbumsEndpoint(this.userID);
+  UserAlbumsEndpoint(this.userId);
 
   @override
   Uri create() {
-    return Uri.https(Urls.users, '$userID/' + Urls.albums);
+    return Uri.https(Urls.users, '$userId/' + Urls.albums);
   }
 }

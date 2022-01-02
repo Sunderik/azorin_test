@@ -25,16 +25,16 @@ abstract class Address implements Built<Address, AddressBuilder> {
   Geolocation? get geolocation;
 
   Address._();
-
+  ///
   factory Address([void Function(AddressBuilder) updates]) = _$Address;
-
+  ///
   Map<String, dynamic>? toJson() {
     return mainSerializers.serializeWith(Address.serializer, this) as Map<String, dynamic>;
   }
-
+  ///
   static Address? fromJson(Map<String, dynamic> json) {
     return mainSerializers.deserializeWith(Address.serializer, json);
   }
-
+  ///
   static Serializer<Address> get serializer => _$addressSerializer;
 }

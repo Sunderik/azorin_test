@@ -5,6 +5,7 @@ import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/users_list_screen/presentation/users_list_screen_bloc.dart';
 import 'package:azorin_test/features/users_list_screen/presentation/widgets/users_list_content.dart';
 
+///
 class UsersListScreenView extends StatefulWidget {
   const UsersListScreenView({Key? key}) : super(key: key);
 
@@ -12,7 +13,9 @@ class UsersListScreenView extends StatefulWidget {
   _UsersListScreenViewState createState() => _UsersListScreenViewState();
 }
 
+///
 class _UsersListScreenViewState extends State<UsersListScreenView> {
+  ///
   UsersListScreenBloc get bloc => Provider.of<UsersListScreenBloc>(context, listen: false);
 
   @override

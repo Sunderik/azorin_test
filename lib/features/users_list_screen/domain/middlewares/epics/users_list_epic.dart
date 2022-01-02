@@ -6,11 +6,11 @@ import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/logger/logger.dart';
 import 'package:azorin_test/features/users_list_screen/domain/actions/users_list_actions.dart';
 import 'package:azorin_test/features/users_list_screen/repository/users_list_repository.dart';
-
+///
 @Injectable()
 class UsersListEpic {
   UsersListEpic(this._repository);
-
+///
   final UsersListRepository _repository;
 
   /// Epic запроса на получение пользователей.

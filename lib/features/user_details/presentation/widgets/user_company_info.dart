@@ -2,8 +2,9 @@ import 'package:azorin_test/core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'info_row.dart';
-
+///
 class UserCompanyInfo extends StatelessWidget {
+  ///
   final Company company;
 
   const UserCompanyInfo({Key? key, required this.company}) : super(key: key);

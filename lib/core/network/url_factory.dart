@@ -1,13 +1,18 @@
 import 'package:injectable/injectable.dart';
 
+///
 abstract class Endpoint {
+  ///Создание url запроса
   Uri create();
 }
 
+///
 abstract class UrlFactory {
+  ///
   Uri createFor<T extends Endpoint>(T endpoint);
 }
 
+///
 @Injectable(as: UrlFactory)
 class UrlAbstractFactory implements UrlFactory {
   @override

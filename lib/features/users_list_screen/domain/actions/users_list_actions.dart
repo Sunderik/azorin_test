@@ -1,9 +1,9 @@
 import 'package:azorin_test/core/core.dart';
 import 'package:built_redux/built_redux.dart';
-import 'package:azorin_test/features/users_list_screen/repository/models/models.dart';
+import 'package:azorin_test/features/users_list_screen/repository/models/_models.dart';
 
 part 'users_list_actions.g.dart';
-
+///
 abstract class UsersListScreenActions extends ReduxActions {
   UsersListScreenActions._();
 

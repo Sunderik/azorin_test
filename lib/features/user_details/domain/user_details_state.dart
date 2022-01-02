@@ -3,6 +3,7 @@ import 'package:azorin_test/core/core.dart';
 
 part 'user_details_state.g.dart';
 
+///
 abstract class UserDetailsState implements Built<UserDetailsState, UserDetailsStateBuilder> {
   /// Объект выбранного опльзователя
   User? get user;
@@ -12,5 +13,6 @@ abstract class UserDetailsState implements Built<UserDetailsState, UserDetailsSt
 
   UserDetailsState._();
 
+  ///
   factory UserDetailsState([void Function(UserDetailsStateBuilder) updates]) = _$UserDetailsState;
 }

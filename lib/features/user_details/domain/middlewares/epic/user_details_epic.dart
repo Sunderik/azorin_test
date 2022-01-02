@@ -6,7 +6,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/logger/logger.dart';
 import 'package:azorin_test/features/user_details/domain/domain.dart';
-import 'package:azorin_test/features/user_details/repository/models/models.dart';
+import 'package:azorin_test/features/user_details/repository/models/_models.dart';
 import 'package:azorin_test/features/user_details/repository/user_details_repository.dart';
 
 ///
@@ -14,6 +14,7 @@ import 'package:azorin_test/features/user_details/repository/user_details_reposi
 class UserDetailsEpic {
   UserDetailsEpic(this._repository);
 
+  ///
   final UserDetailsRepository _repository;
 
   ///

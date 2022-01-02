@@ -3,9 +3,9 @@ import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
-
+///
 final injector = GetIt.instance;
-
+///
 @injectableInit
 void configureInjection(String environment) {
   injector.registerFactory(() => Client());

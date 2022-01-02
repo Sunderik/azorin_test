@@ -1,11 +1,9 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/users_list_screen/domain/actions/users_list_actions.dart';
-import 'package:azorin_test/features/users_list_screen/repository/models/models.dart';
+import 'package:azorin_test/features/users_list_screen/repository/models/_models.dart';
 
-import 'package:azorin_test/injection.dart';
-
+///
 MiddlewareBuilder<AppState, AppStateBuilder, AppActions> usersListMiddleware() {
   return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
     ..add(UsersListScreenActionsNames.usersRequest, _usersRequest)
@@ -25,17 +23,10 @@ void _setUsersResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
 
   switch (usersResponse.httpCode) {
     case 200:
-       api.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.wait);
-       api.actions.users.setUsers(usersResponse.users!.toBuiltList());
+      api.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.wait);
+      api.actions.users.setUsers(usersResponse.users!.toBuiltList());
       break;
     default:
-      {
-        // if (!api.state.isOfflineMode) {
-        //   api.actions.teamListActions.setTeamListScreenStatus(ScreenStatusEnum.fail);
-        //   injector
-        //       .get<DisplayErrorService>()
-        //       .displayServerError(httpCode: usersResponse.httpCode, message: usersResponse.message);
-        // }
-      }
+      break;
   }
 }

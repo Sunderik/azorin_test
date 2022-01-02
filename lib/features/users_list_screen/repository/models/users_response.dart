@@ -13,15 +13,19 @@ abstract class UsersResponse implements BaseModel, Built<UsersResponse, UsersRes
 
   UsersResponse._();
 
+  ///
   factory UsersResponse([void Function(UsersResponseBuilder) updates]) = _$UsersResponse;
 
+  ///
   Map<String, dynamic>? toJson() {
     return mainSerializers.serializeWith(UsersResponse.serializer, this) as Map<String, dynamic>;
   }
 
+  ///
   static UsersResponse? fromJson(Map<String, dynamic> json) {
     return mainSerializers.deserializeWith(UsersResponse.serializer, json);
   }
 
+  ///
   static Serializer<UsersResponse> get serializer => _$usersResponseSerializer;
 }

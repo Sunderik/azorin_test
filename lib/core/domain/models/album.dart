@@ -16,16 +16,16 @@ abstract class Album implements Built<Album, AlbumBuilder> {
   String? get title;
 
   Album._();
-
+  ///
   factory Album([void Function(AlbumBuilder) updates]) = _$Album;
-
+  ///
   Map<String, dynamic>? toJson() {
     return mainSerializers.serializeWith(Album.serializer, this) as Map<String, dynamic>;
   }
-
+  ///
   static Album? fromJson(Map<String, dynamic> json) {
     return mainSerializers.deserializeWith(Album.serializer, json);
   }
-
+  ///
   static Serializer<Album> get serializer => _$albumSerializer;
 }

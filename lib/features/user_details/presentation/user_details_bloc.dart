@@ -3,14 +3,17 @@ import 'dart:async';
 import 'package:azorin_test/core/bloc/base_bloc.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/core/domain/models/post.dart';
-import 'package:azorin_test/features/user_details/repository/models/models.dart';
+import 'package:azorin_test/features/user_details/repository/models/_models.dart';
 import 'package:built_collection/built_collection.dart';
 
+///
 class UserDetailsBloc extends BaseBloc {
   UserDetailsBloc(this.userId);
 
+  ///
   final int userId;
 
+  ///
   User? user;
 
   /// Стрим данных контроллера [_userDetailsScreenStatusController].
@@ -22,9 +25,6 @@ class UserDetailsBloc extends BaseBloc {
   /// Стрим данных контроллера [_appBarNameController].
   Stream<List<Post>?>? get postsStream => _postsController?.stream;
 
-  // endregion
-
-  // region Private Fields
   /// Контроллер статуса экрана.
   late StreamController<ScreenStatusEnum?>? _userDetailsScreenStatusController;
 
@@ -50,8 +50,6 @@ class UserDetailsBloc extends BaseBloc {
     actions.userScreen.clearUserDetails(null);
   }
 
-  // endregion
-
   @override
   void init() {
     super.init();
@@ -75,6 +73,7 @@ class UserDetailsBloc extends BaseBloc {
     _postsController = StreamController<List<Post>?>.broadcast();
   }
 
+  ///
   void loadUserInfo() {
     user = store!.state.usersState.users.firstWhere((_user) => _user.id == userId);
 
@@ -99,6 +98,7 @@ class UserDetailsBloc extends BaseBloc {
     super.dispose();
   }
 
+  ///
   _loadUserPosts() {
     final request = UserPostsRequest((builder) => builder..userId = userId);
     // Выполяем запрос.

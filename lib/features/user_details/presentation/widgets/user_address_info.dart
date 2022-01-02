@@ -3,8 +3,9 @@ import 'package:azorin_test/core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'info_row.dart';
-
+///
 class UserAddressInfo extends StatelessWidget {
+  ///
   final Address address;
 
   const UserAddressInfo({Key? key, required this.address}) : super(key: key);

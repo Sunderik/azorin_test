@@ -7,10 +7,10 @@ import 'package:azorin_test/core/network/models/rest_bundle.dart';
 import 'package:azorin_test/core/network/service/rest_service.dart';
 import 'package:azorin_test/core/utilities/isolate_manager/isolate_manager_mixin.dart';
 import 'package:azorin_test/features/logger/logger.dart';
-import 'package:azorin_test/features/user_details/repository/models/models.dart';
+import 'package:azorin_test/features/user_details/repository/models/_models.dart';
 import 'package:azorin_test/features/user_details/repository/endpoints/endpoints.dart';
 
-import 'models/models.dart';
+import 'models/_models.dart';
 
 ///
 abstract class UserDetailsRepository {

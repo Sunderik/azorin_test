@@ -8,25 +8,31 @@ import 'package:azorin_test/core/network/models/rest_bundle.dart';
 import 'package:azorin_test/core/network/service/rest_service.dart';
 import 'package:azorin_test/core/utilities/isolate_manager/isolate_manager_mixin.dart';
 import 'package:azorin_test/features/logger/logger.dart';
-import 'package:azorin_test/features/users_list_screen/repository/models/models.dart';
+import 'package:azorin_test/features/users_list_screen/repository/models/_models.dart';
 import 'package:azorin_test/injection.dart';
 
 import 'endpoint/users_list_endpoint.dart';
 import 'models/serializers.dart';
 
+///
 abstract class UsersListRepository {
   /// Запрос списка пользователей.
   Stream<UsersResponse> makeUsersRequest({Duration? timeout});
 }
 
+///
 @Injectable(as: UsersListRepository)
 class TeamRepositoryImpl with IsolateManagerMixin implements UsersListRepository {
+  ///
   final StoreProvider _storeProvider = injector.get<StoreProvider>();
 
+  ///
   Store<AppState, AppStateBuilder, AppActions> get store => _storeProvider.store!;
 
+  ///
   late final RestService _restService;
 
+  ///
   late final UrlFactory _urlFactory;
 
   TeamRepositoryImpl(this._restService, this._urlFactory);
@@ -44,6 +50,7 @@ class TeamRepositoryImpl with IsolateManagerMixin implements UsersListRepository
     return outputSubject;
   }
 
+  ///
   void _makeUsersRequest(BehaviorSubject<RestBundle> input, BehaviorSubject<UsersResponse> output,
       {Duration? timeout}) {
     final endpoint = UsersListEndpoint();
@@ -53,6 +60,7 @@ class TeamRepositoryImpl with IsolateManagerMixin implements UsersListRepository
   }
 }
 
+///
 UsersResponse usersMapRestBundle(RestBundle bundle) {
   if (bundle.status != 200) {
     return UsersResponse((builder) => builder

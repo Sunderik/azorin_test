@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'presentation.dart';
-
+///
 class UserDetails extends StatelessWidget {
+ ///
   final int userId;
 
   const UserDetails({

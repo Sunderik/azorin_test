@@ -13,12 +13,15 @@ import 'package:injectable/injectable.dart';
 const _methodPost = 'POST';
 const _methodGet = 'GET';
 
+///
 abstract class RestService {
+  ///
   Future<RESP> get<RESP>(
     Uri path, {
     Map<String, dynamic> queryParameters,
   });
 
+  ///
   Future<RESP> getStringRequest<RESP>(
     Uri path, {
     Map<String, dynamic>? queryParameters,
@@ -26,29 +29,40 @@ abstract class RestService {
     Map<String, String>? headers,
   });
 
+  ///
   Future<RESP> post<RESP>(Uri path, Built request, {Serializer? deserializer, Map<String, String>? headers});
 
+  ///
   Future<RESP> postStringRequest<RESP>(Uri url, String stringRequest,
       {Serializer? deserializer, Map<String, String>? headers});
 
+  ///
   Map<int, Interceptor> get interceptors;
 
+  ///
   void setLoggingEnabled(bool isEnabled, {bool stripBody});
 
+  ///
   void addInterceptor(int order, Interceptor interceptor);
 
+  ///
   void removeInterceptor(Interceptor interceptor);
 }
 
+///
 @Injectable(as: RestService)
 class RestServiceImpl implements RestService {
   RestServiceImpl(
     this.client,
   );
 
+  ///
   final Client client;
 
+  ///
   bool _isLoggingEnabled = true;
+
+  ///
   final bool _debugBody = false;
 
   @override
@@ -103,15 +117,6 @@ class RestServiceImpl implements RestService {
       return serializers.deserializeWith(deserializer, jsonDecode(response.body)) as RESP;
     } else {
       return response as RESP;
-    }
-  }
-
-  void _interceptRequest(request) {
-    try {
-      final sortedInterceptors = interceptors.keys.toList()..sort();
-      sortedInterceptors.forEach((key) => interceptors[key]!.intercept(request));
-    } catch (error) {
-      logger.e('interceptor error: $error');
     }
   }
 
@@ -192,6 +197,17 @@ class RestServiceImpl implements RestService {
     }
   }
 
+  ///
+  void _interceptRequest(request) {
+    try {
+      final sortedInterceptors = interceptors.keys.toList()..sort();
+      sortedInterceptors.forEach((key) => interceptors[key]!.intercept(request));
+    } catch (error) {
+      logger.e('interceptor error: $error');
+    }
+  }
+
+  ///
   void _printResponseLog(String method, Response response) {
     debugPrint('$method ${response.request!.url}');
     debugPrint('status: ${response.statusCode}');
@@ -201,6 +217,7 @@ class RestServiceImpl implements RestService {
     }
   }
 
+  ///
   void _printRequestLog(String method, Request request) {
     debugPrint('$method ${request.url}');
     request.headers.forEach((key, value) => debugPrint('$key: $value'));

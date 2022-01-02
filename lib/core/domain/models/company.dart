@@ -16,16 +16,16 @@ abstract class Company implements Built<Company, CompanyBuilder> {
   String? get bs;
 
   Company._();
-
+  ///
   factory Company([void Function(CompanyBuilder) updates]) = _$Company;
-
+  ///
   Map<String, dynamic>? toJson() {
     return mainSerializers.serializeWith(Company.serializer, this) as Map<String, dynamic>;
   }
-
+  ///
   static Company? fromJson(Map<String, dynamic> json) {
     return mainSerializers.deserializeWith(Company.serializer, json);
   }
-
+  ///
   static Serializer<Company> get serializer => _$companySerializer;
 }

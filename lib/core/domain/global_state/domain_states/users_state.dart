@@ -9,20 +9,26 @@ import 'package:azorin_test/core/domain/domain.dart';
 
 part 'users_state.g.dart';
 
+///
 abstract class UsersState implements Built<UsersState, UsersStateBuilder> {
+  ///
   BuiltList<User> get users;
 
   UsersState._();
 
+  ///
   factory UsersState([void Function(UsersStateBuilder) updates]) = _$UsersState;
 
+  ///
   String toJson() {
     return json.encode(mainSerializers.serializeWith(UsersState.serializer, this));
   }
 
+  ///
   static UsersState? fromJson(String jsonString) {
     return mainSerializers.deserializeWith(UsersState.serializer, json.decode(jsonString));
   }
 
+  ///
   static Serializer<UsersState> get serializer => _$usersStateSerializer;
 }
