@@ -7,7 +7,7 @@ import 'package:azorin_test/core/core.dart' hide mainSerializers;
 import 'package:azorin_test/core/network/models/rest_bundle.dart';
 import 'package:azorin_test/core/network/service/rest_service.dart';
 import 'package:azorin_test/core/utilities/isolate_manager/isolate_manager_mixin.dart';
-import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:azorin_test/features/users_list_screen/repository/models/_models.dart';
 import 'package:azorin_test/injection.dart';
 

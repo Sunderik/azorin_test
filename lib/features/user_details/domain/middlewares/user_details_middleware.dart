@@ -27,9 +27,15 @@ void _setUserPostsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> 
 
   final UserPostsResponse userPostsResponse = action.payload;
   User? user = api.state.userDetailsState.user;
-  //переписываем полльзователя добавляя ему посты
-  user = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
-  api.actions.userScreen.setUserDetails(user!);
+  //переписываем полльзователя добавляя ему посты в стейте окна пользователя
+  User? userUpd = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
+  api.actions.userScreen.setUserDetails(userUpd!);
+  //переписываем полльзователя добавляя ему посты в стейте пользователей
+  List<User> _users = api.state.usersState.users.toList();
+  var index = _users.indexOf(user!);
+  _users.removeAt(index);
+  _users.insert(index, userUpd);
+  api.actions.users.setUsers(_users.toBuiltList());
 }
 
 /// Запрос на изменение статуса пользователя.

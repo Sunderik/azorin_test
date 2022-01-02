@@ -18,6 +18,7 @@ class PostPreviewList extends StatelessWidget {
         builder: (context, snapshot) {
           var posts = snapshot.data;
           if (posts == null) {
+            bloc.loadUserPosts();
             return const Center(
               child: CircularProgressIndicator(),
             );

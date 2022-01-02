@@ -1,5 +1,5 @@
 import 'package:azorin_test/core/domain/global_state/domain_states/users_state.dart';
-import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:azorin_test/features/navigation/domain/navigaion_state.dart';
 import 'package:azorin_test/features/users_list_screen/domain/users_list_state.dart';
 import 'package:built_redux/built_redux.dart';

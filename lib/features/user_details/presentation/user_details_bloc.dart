@@ -16,6 +16,9 @@ class UserDetailsBloc extends BaseBloc {
   ///
   User? user;
 
+  ///
+  List<Post>? _posts;
+
   /// Стрим данных контроллера [_userDetailsScreenStatusController].
   Stream<ScreenStatusEnum?>? get userDetailsScreenStatusStream => _userDetailsScreenStatusController?.stream;
 
@@ -77,15 +80,19 @@ class UserDetailsBloc extends BaseBloc {
   void loadUserInfo() {
     user = store!.state.usersState.users.firstWhere((_user) => _user.id == userId);
 
-    if (user != null) {
-      store!.actions.userScreen.setUserDetails(user!);
-      store!.actions.userScreen.setUserDetailsScreenStatus(ScreenStatusEnum.wait);
-      Future.delayed(const Duration(microseconds: 1)) //для разделения инциализирующего потока (чтоб инит не перекрывал)
-          .then((value) => {_appBarNameController?.sink.add(user!.userName!)});
-      _loadUserPosts();
-    } else {
-      store!.actions.userScreen.setUserDetailsScreenStatus(ScreenStatusEnum.loading);
-    }
+    Future.delayed(const Duration(microseconds: 1)) //для разделения инциализирующего потока (чтоб инит не перекрывал)
+        .then((value) => {
+              if (user != null)
+                {
+                  store!.actions.userScreen.setUserDetails(user!),
+                  _userDetailsScreenStatusController?.sink.add(ScreenStatusEnum.wait),
+                  _appBarNameController?.sink.add(user!.userName!),
+                }
+              else
+                {
+                  _userDetailsScreenStatusController?.sink.add(ScreenStatusEnum.loading),
+                }
+            });
   }
 
   @override
@@ -99,7 +106,17 @@ class UserDetailsBloc extends BaseBloc {
   }
 
   ///
-  _loadUserPosts() {
+  loadUserPosts() {
+    _posts = user!.posts?.toList();
+    if (_posts != null && _posts!.isNotEmpty) {
+      _postsController?.sink.add(_posts);
+    } else {
+      _downloadUserPosts();
+    }
+  }
+
+  ///
+  _downloadUserPosts() {
     final request = UserPostsRequest((builder) => builder..userId = userId);
     // Выполяем запрос.
     store?.actions.userScreen.userPostsRequest(request);

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:azorin_test/core/network/interceptor/auth_interceptor.dart';
 import 'package:azorin_test/core/network/interceptor/interceptor.dart';
 import 'package:azorin_test/core/network/models/network_serializers.dart';
-import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/foundation.dart';

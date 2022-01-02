@@ -3,7 +3,7 @@ import 'package:built_collection/built_collection.dart';
 
 import 'package:azorin_test/features/users_list_screen/domain/domain.dart';
 import 'package:azorin_test/core/core.dart';
-import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:azorin_test/features/navigation/domain/app_route.dart';
 import 'package:azorin_test/features/navigation/navigation.dart';
 

@@ -2,7 +2,7 @@ import 'package:azorin_test/core/network/models/rest_bundle.dart';
 import 'package:azorin_test/core/network/service/rest_service.dart';
 import 'package:azorin_test/core/utilities/isolate_manager/isolate_executor.dart';
 import 'package:azorin_test/core/utilities/isolate_manager/task.dart';
-import 'package:azorin_test/features/logger/logger.dart';
+import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/foundation.dart';
