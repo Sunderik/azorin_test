@@ -20,13 +20,9 @@ class UserMainInfo extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xff7c94b6),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png'),
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.asset(
+                  'assets/images/user_avatar.png',
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -71,5 +67,3 @@ class UserMainInfo extends StatelessWidget {
     );
   }
 }
-
-
