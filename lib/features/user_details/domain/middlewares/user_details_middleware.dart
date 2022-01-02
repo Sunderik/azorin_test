@@ -7,38 +7,41 @@ import 'package:collection/collection.dart';
 
 MiddlewareBuilder<AppState, AppStateBuilder, AppActions> userDetailsMiddleware() {
   return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
-    ..add(UserDetailsActionsNames.userLastsPostsRequest, _userLastsPostsRequest)
-    ..add(UserDetailsActionsNames.setUserLastsPostsResponse, _setUserLastsPostsResponse)
-    ..add(UserDetailsActionsNames.userLastsAlbumsRequest, _userLastsAlbumsRequest)
-    ..add(UserDetailsActionsNames.setUserLastsAlbumsResponse, _setUserLastsAlbumsResponse);
+    ..add(UserDetailsActionsNames.userPostsRequest, _userPostsRequest)
+    ..add(UserDetailsActionsNames.setUserPostsResponse, _setUserPostsResponse)
+    ..add(UserDetailsActionsNames.userAlbumsRequest, _userAlbumsRequest)
+    ..add(UserDetailsActionsNames.setUserAlbumsResponse, _setUserAlbumsResponse);
 }
 
 /// Запрос на получение информации об исполнителе.
-void _userLastsPostsRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
-    Action<UserLastsPostsRequest> action) async {
+void _userPostsRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
+    Action<UserPostsRequest> action) async {
   next(action);
 }
 
 /// Ответ на запрос изменения статуса пользователя.
-void _setUserLastsPostsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
-    Action<UserLastsPostsResponse> action) async {
+void _setUserPostsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
+    Action<UserPostsResponse> action) async {
   next(action);
 
-  final UserLastsPostsResponse userLastsPostsResponse = action.payload;
+  final UserPostsResponse userPostsResponse = action.payload;
+  User? user = api.state.userDetailsState.user;
+  //переписываем полльзователя добавляя ему посты
+  user = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
+  api.actions.userScreen.setUserDetails(user!);
+
 }
 
 /// Запрос на изменение статуса пользователя.
-void _userLastsAlbumsRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
-    Action<UserLastsAlbumsRequest> action) async {
+void _userAlbumsRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
+    Action<UserAlbumsRequest> action) async {
   next(action);
 }
 
 /// Ответ на запрос получения информации о сотруднике.
-void _setUserLastsAlbumsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
-    Action<UserLastsAlbumsResponse> action) async {
+void _setUserAlbumsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next,
+    Action<UserAlbumsResponse> action) async {
   next(action);
 
-  final UserLastsAlbumsResponse userLastsAlbumsResponse = action.payload;
-
-
+  final UserAlbumsResponse userAlbumsResponse = action.payload;
 }

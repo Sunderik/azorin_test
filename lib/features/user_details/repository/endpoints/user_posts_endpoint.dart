@@ -7,6 +7,8 @@ class UserPostsEndpoint implements Endpoint {
 
   @override
   Uri create() {
-    return Uri.https(Urls.users, '$userID/' + Urls.posts);
+    String path = Urls.users + '/$userID' + Urls.posts;
+    var url = Uri.https(Urls.baseUrl, path);
+    return url;
   }
 }

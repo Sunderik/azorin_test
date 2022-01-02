@@ -11,8 +11,3 @@ class RestBundle {
   final int? status;
   RestBundle({this.key, this.data, this.bodyBytes, this.serializer, this.timeout, this.status});
 }
-
-// dynamic deserializeBundle(RestBundle bundle) {
-//   return serializers.deserializeWith(
-//       bundle.serializer, jsonDecode(bundle.data));
-// }

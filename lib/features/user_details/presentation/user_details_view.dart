@@ -1,3 +1,4 @@
+import 'package:azorin_test/features/user_details/presentation/widgets/posts/posts_preview_list.dart';
 import 'package:azorin_test/features/user_details/presentation/widgets/user_adress_info.dart';
 import 'package:azorin_test/features/user_details/presentation/widgets/user_company_info.dart';
 import 'package:azorin_test/features/user_details/presentation/widgets/user_main_info.dart';
@@ -109,8 +110,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   ///
   /// [user] - объект пользователя.
   Widget _getWaitScreenView({required User user}) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
+    return SingleChildScrollView(
       child: Column(
         children: [
           Padding(
@@ -133,6 +133,10 @@ class _UserDetailsViewState extends State<UserDetailsView> {
             child: UserCompanyInfo(
               company: user.company,
             ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(4.0),
+            child: PostPreviewList(),
           ),
         ],
       ),

@@ -20,7 +20,8 @@ void _clearAppState(AppState state, Action<void> action, AppStateBuilder builder
   builder
     ..navigationState = NavigationState().toBuilder()
     ..usersState = UsersState().toBuilder()
-    ..usersListState = UsersListScreenState().toBuilder();
+    ..usersListState = UsersListScreenState().toBuilder()
+    ..userDetailsState = UserDetailsState().toBuilder();
 }
 
 void _setTheme(AppState state, Action<void> action, AppStateBuilder builder) {

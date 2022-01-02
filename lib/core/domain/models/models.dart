@@ -4,3 +4,5 @@ export 'address.dart';
 export 'company.dart';
 export 'geolocation.dart';
 export 'date_time_serializer.dart';
+export 'post.dart';
+export 'album.dart';

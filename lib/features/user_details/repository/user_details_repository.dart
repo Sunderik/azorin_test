@@ -12,14 +12,16 @@ import 'package:azorin_test/features/user_details/repository/endpoints/endpoints
 
 import 'models/models.dart';
 
+///
 abstract class UserDetailsRepository {
-  /// Запрос на получение исполнителя проекта
-  Stream<UserLastsPostsResponse> makeUserLastPostsRequest({required int userId, Duration timeout});
+  ///
+  Stream<UserPostsResponse> makeUserPostsRequest({required int userId, Duration timeout});
 
-  /// Запрос на изменение статуса пользователя
-  Stream<UserLastsAlbumsResponse> makeUserLastAlbumsRequest({required int userId, Duration timeout});
+  ///
+  Stream<UserAlbumsResponse> makeUserAlbumsRequest({required int userId, Duration timeout});
 }
 
+///
 @Injectable(as: UserDetailsRepository)
 class UserDetailsRepositoryImpl with IsolateManagerMixin implements UserDetailsRepository {
   late final RestService _restService;
@@ -27,14 +29,13 @@ class UserDetailsRepositoryImpl with IsolateManagerMixin implements UserDetailsR
 
   UserDetailsRepositoryImpl(this._restService, this._urlFactory);
 
-  /// Запрос на получение информации об исполнителе
   @override
-  Stream<UserLastsPostsResponse> makeUserLastPostsRequest(
+  Stream<UserPostsResponse> makeUserPostsRequest(
       {required int userId, Duration timeout = const Duration(seconds: 20)}) {
     final inputSubject = BehaviorSubject<RestBundle>();
-    final outputSubject = BehaviorSubject<UserLastsPostsResponse>();
-    subscribe(inputSubject, outputSubject, userLastsPostsMapRestBundle);
-    _makeUserLastPostsRequest(
+    final outputSubject = BehaviorSubject<UserPostsResponse>();
+    subscribe(inputSubject, outputSubject, userPostsMapRestBundle);
+    _makeUserPostsRequest(
       input: inputSubject,
       output: outputSubject,
       userId: userId,
@@ -44,9 +45,10 @@ class UserDetailsRepositoryImpl with IsolateManagerMixin implements UserDetailsR
     return outputSubject.map((output) => output);
   }
 
-  void _makeUserLastPostsRequest(
+  ///
+  void _makeUserPostsRequest(
       {required BehaviorSubject<RestBundle> input,
-      required BehaviorSubject<UserLastsPostsResponse> output,
+      required BehaviorSubject<UserPostsResponse> output,
       required int userId,
       required Duration timeout}) {
     final endpoint = UserPostsEndpoint(userId);
@@ -56,19 +58,18 @@ class UserDetailsRepositoryImpl with IsolateManagerMixin implements UserDetailsR
       output,
       _restService,
       url,
-      UserLastsPostsResponse.serializer,
+      UserPostsResponse.serializer,
       timeout,
     );
   }
 
-  /// Запрос на изменение статуса исполнителя
   @override
-  Stream<UserLastsAlbumsResponse> makeUserLastAlbumsRequest(
+  Stream<UserAlbumsResponse> makeUserAlbumsRequest(
       {required int userId, Duration timeout = const Duration(seconds: 20)}) {
     final inputSubject = BehaviorSubject<RestBundle>();
-    final outputSubject = BehaviorSubject<UserLastsAlbumsResponse>();
-    subscribe(inputSubject, outputSubject, userLastsAlbumsMapRestBundle);
-    _makeUserLastAlbumsRequest(
+    final outputSubject = BehaviorSubject<UserAlbumsResponse>();
+    subscribe(inputSubject, outputSubject, userAlbumsMapRestBundle);
+    _makeUserAlbumsRequest(
       input: inputSubject,
       output: outputSubject,
       userId: userId,
@@ -78,45 +79,48 @@ class UserDetailsRepositoryImpl with IsolateManagerMixin implements UserDetailsR
     return outputSubject.map((output) => output);
   }
 
-  void _makeUserLastAlbumsRequest(
+  ///
+  void _makeUserAlbumsRequest(
       {required BehaviorSubject<RestBundle> input,
-      required BehaviorSubject<UserLastsAlbumsResponse> output,
+      required BehaviorSubject<UserAlbumsResponse> output,
       required int userId,
       required Duration timeout}) {
     final endpoint = UserAlbumsEndpoint(userId);
     final url = _urlFactory.createFor<UserAlbumsEndpoint>(endpoint);
 
-    executeGetRestRequest(input, output, _restService, url, UserLastsAlbumsResponse.serializer, timeout);
+    executeGetRestRequest(input, output, _restService, url, UserAlbumsResponse.serializer, timeout);
   }
 }
 
-UserLastsPostsResponse userLastsPostsMapRestBundle(RestBundle bundle) {
+///
+UserPostsResponse userPostsMapRestBundle(RestBundle bundle) {
   if (bundle.status != 200) {
-    return UserLastsPostsResponse((builder) => builder
+    return UserPostsResponse((builder) => builder
       ..httpCode = bundle.status
       ..message = bundle.data.toString());
   }
   try {
-    final jsonDecoded = jsonDecode(bundle.data ?? '');
-    UserLastsPostsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecoded);
+    final jsonDecoded = {"posts": jsonDecode(bundle.data ?? '')};
+    UserPostsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecoded);
     return response.rebuild((builder) => builder.httpCode = bundle.status);
   } catch (err) {
-    logger.e('userLastsPostsMapRestBundle $err');
-    return UserLastsPostsResponse((builder) => builder.httpCode = bundle.status);
+    logger.e('userPostsMapRestBundle $err');
+    return UserPostsResponse((builder) => builder.httpCode = bundle.status);
   }
 }
 
-UserLastsAlbumsResponse userLastsAlbumsMapRestBundle(RestBundle bundle) {
+///
+UserAlbumsResponse userAlbumsMapRestBundle(RestBundle bundle) {
   if (bundle.status != 200) {
-    return UserLastsAlbumsResponse((builder) => builder
+    return UserAlbumsResponse((builder) => builder
       ..httpCode = bundle.status
       ..message = bundle.data.toString());
   }
   try {
-    UserLastsAlbumsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecode(bundle.data ?? ''));
+    UserAlbumsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecode(bundle.data ?? ''));
     return response.rebuild((builder) => builder.httpCode = bundle.status);
   } catch (err) {
-    logger.e('userLastsAlbumsMapRestBundle $err');
-    return UserLastsAlbumsResponse((builder) => builder.httpCode = bundle.status);
+    logger.e('userAlbumsMapRestBundle $err');
+    return UserAlbumsResponse((builder) => builder.httpCode = bundle.status);
   }
 }

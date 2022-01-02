@@ -1,3 +1,5 @@
+import 'package:azorin_test/core/domain/models/post.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:azorin_test/core/domain/serializers/serializers.dart';
@@ -32,6 +34,9 @@ abstract class User implements Built<User, UserBuilder> {
 
   ///
   String? get website;
+
+  ///
+  BuiltList<Post>? get posts;
 
   User._();
 
