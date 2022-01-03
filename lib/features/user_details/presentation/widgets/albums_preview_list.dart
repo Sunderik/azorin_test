@@ -1,39 +1,38 @@
-import 'package:azorin_test/core/domain/models/post.dart';
+import 'package:azorin_test/core/domain/models/album.dart';
 import 'package:azorin_test/features/user_details/presentation/user_details_bloc.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 ///
-class PostPreviewList extends StatelessWidget {
-  const PostPreviewList({Key? key}) : super(key: key);
+class AlbumsPreviewList extends StatelessWidget {
+  const AlbumsPreviewList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     UserDetailsBloc bloc = Provider.of<UserDetailsBloc>(context, listen: false);
 
-    return StreamBuilder<List<Post>?>(
-        stream: bloc.postsStream,
+    return StreamBuilder<List<Album>?>(
+        stream: bloc.albumsStream,
         initialData: null,
         builder: (context, snapshot) {
-          var posts = snapshot.data;
-          if (posts == null) {
-            bloc.loadUserPosts();
+          var albums = snapshot.data;
+          if (albums == null) {
+            bloc.loadUserAlbums();
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (posts.isEmpty) {
+          } else if (albums.isEmpty) {
             return const Center(
-              child: Text('Посты отсутствуют.'),
+              child: Text('Альбомы отсутствуют.'),
             );
-          } else if (posts.isNotEmpty) {
-            posts = posts.getRange(0, 3).toList();
+          } else if (albums.isNotEmpty) {
+            albums = albums.getRange(0, 3).toList();
             return Card(
               child: Column(
                 children: [
                   _getCardHeader(),
                   const Divider(indent: 8, endIndent: 8),
-                  _getCardContent(posts),
+                  _getCardContent(albums),
                 ],
               ),
             );
@@ -51,7 +50,7 @@ class PostPreviewList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [
           Text(
-            'Posts',
+            'Albums',
             style: TextStyle(fontSize: 16),
           ),
           Chip(
@@ -65,24 +64,23 @@ class PostPreviewList extends StatelessWidget {
   }
 
   ///
-  Widget _getCardContent(List<Post> posts) {
-    List<Widget> widgets = posts.map((post) {
+  Widget _getCardContent(List<Album> albums) {
+    List<Widget> widgets = albums.map((album) {
       return Builder(
         builder: (BuildContext context) {
           return ListTile(
-            onTap: () => {},
-            title: Text(post.title!),
-            subtitle: Text(
-              post.body!,
-              maxLines: 1,
+            onTap: ()=>{},
+            leading: Image.asset(
+              'assets/images/album_miniature.png',
+              fit: BoxFit.cover,
             ),
+            title: Text(album.title!),
           );
         },
       );
     }).toList();
-    return CarouselSlider(
-      options: CarouselOptions(height: 100.0, enableInfiniteScroll: false),
-      items: widgets,
+    return Column(
+      children: [...widgets],
     );
   }
 }

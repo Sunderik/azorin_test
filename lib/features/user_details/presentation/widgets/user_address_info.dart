@@ -3,6 +3,7 @@ import 'package:azorin_test/core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'info_row.dart';
+
 ///
 class UserAddressInfo extends StatelessWidget {
   ///
@@ -47,12 +48,19 @@ class UserAddressInfo extends StatelessWidget {
               if (address.geolocation != null)
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () => _openMap(address.geolocation),
-                    child: const Center(
-                      child: Icon(
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () => _openMap(address.geolocation),
+                      child: const Icon(
                         Icons.pin_drop,
                         color: Colors.red,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 5,
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(10),
+                        primary: Colors.white, // <-- Button color
+                        onPrimary: Colors.white60, // <-- Splash color
                       ),
                     ),
                   ),

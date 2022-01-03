@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:azorin_test/core/core.dart';
@@ -8,6 +9,9 @@ part 'user_albums_response.g.dart';
 
 ///
 abstract class UserAlbumsResponse implements BaseModel, Built<UserAlbumsResponse, UserAlbumsResponseBuilder> {
+  ///
+  BuiltList<Album>? get albums;
+
   UserAlbumsResponse._();
 
   ///

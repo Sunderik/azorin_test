@@ -27,11 +27,9 @@ class UserMainInfo extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: Container(
-                child: Image.asset(
-                  'assets/images/user_avatar.png',
-                  fit: BoxFit.fill,
-                ),
+              child: Image.asset(
+                'assets/images/user_avatar.png',
+                fit: BoxFit.fill,
               ),
             ),
             Expanded(

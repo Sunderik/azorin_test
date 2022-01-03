@@ -19,7 +19,7 @@ class InfoRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 2.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               name + ':',

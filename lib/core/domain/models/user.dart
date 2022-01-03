@@ -38,6 +38,9 @@ abstract class User implements Built<User, UserBuilder> {
   ///
   BuiltList<Post>? get posts;
 
+  ///
+  BuiltList<Album>? get albums;
+
   User._();
 
   ///

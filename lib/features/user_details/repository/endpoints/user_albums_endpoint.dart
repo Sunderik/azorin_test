@@ -8,6 +8,8 @@ class UserAlbumsEndpoint implements Endpoint {
 
   @override
   Uri create() {
-    return Uri.https(Urls.users, '$userId/' + Urls.albums);
+    String path = Urls.users + '/$userId' + Urls.albums;
+    var url = Uri.https(Urls.baseUrl, path);
+    return url;
   }
 }

@@ -140,6 +140,11 @@ class _UserDetailsViewState extends State<UserDetailsView> {
             padding: EdgeInsets.all(4.0),
             child: PostPreviewList(),
           ),
+          const Padding(
+            padding: EdgeInsets.all(4.0),
+            child:  AlbumsPreviewList(),
+          ),
+
         ],
       ),
     );

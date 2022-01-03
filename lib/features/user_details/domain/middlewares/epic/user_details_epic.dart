@@ -40,7 +40,7 @@ class UserDetailsEpic {
   Stream userAlbumsEpic(Stream<Action<dynamic>> stream, MiddlewareApi<AppState, AppStateBuilder, AppActions> api) {
     return stream
         .where((action) => action.name == UserDetailsActionsNames.userAlbumsRequest.name)
-        .cast<Action<UserPostsRequest>>()
+        .cast<Action<UserAlbumsRequest>>()
         .switchMap((action) {
       final request = action.payload;
       return _repository.makeUserAlbumsRequest(

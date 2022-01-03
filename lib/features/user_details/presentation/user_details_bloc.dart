@@ -19,14 +19,20 @@ class UserDetailsBloc extends BaseBloc {
   ///
   List<Post>? _posts;
 
-  /// Стрим данных контроллера [_userDetailsScreenStatusController].
+  ///
+  List<Album>? _albums;
+
+  /// Поток данных контроллера [_userDetailsScreenStatusController].
   Stream<ScreenStatusEnum?>? get userDetailsScreenStatusStream => _userDetailsScreenStatusController?.stream;
 
-  /// Стрим данных контроллера [_appBarNameController].
+  /// Поток данных контроллера [_appBarNameController].
   Stream<String>? get appBarNameStream => _appBarNameController?.stream;
 
-  /// Стрим данных контроллера [_appBarNameController].
+  /// Поток данных контроллера [_postsController].
   Stream<List<Post>?>? get postsStream => _postsController?.stream;
+
+  /// Поток данных контроллера [_albumsController].
+  Stream<List<Album>?>? get albumsStream => _albumsController?.stream;
 
   /// Контроллер статуса экрана.
   late StreamController<ScreenStatusEnum?>? _userDetailsScreenStatusController;
@@ -42,6 +48,12 @@ class UserDetailsBloc extends BaseBloc {
 
   /// Подписка на значения поля UsersState.users[userId].posts.
   late StreamSubscription<BuiltList<Post>?>? _postsSubscription;
+
+  /// Контроллер списка альбомов пользователя.
+  late StreamController<List<Album>?>? _albumsController;
+
+  /// Подписка на значения поля UsersState.users[userId].albums.
+  late StreamSubscription<BuiltList<Album>?>? _albumsSubscription;
 
   /// Возвращает информацию об исполнителе (сотруднике).
   User? getUserDetails() {
@@ -74,6 +86,14 @@ class UserDetailsBloc extends BaseBloc {
       }
     });
     _postsController = StreamController<List<Post>?>.broadcast();
+
+    _albumsSubscription =
+        store?.nextSubstate((AppState state) => state.userDetailsState.user?.albums).listen((BuiltList<Album>? albums) {
+      if (albums != null) {
+        _albumsController?.sink.add(albums.toList());
+      }
+    });
+    _albumsController = StreamController<List<Album>?>.broadcast();
   }
 
   ///
@@ -102,6 +122,8 @@ class UserDetailsBloc extends BaseBloc {
     _appBarNameController?.close();
     _postsController?.close();
     _postsSubscription?.cancel();
+    _albumsController?.close();
+    _albumsSubscription?.cancel();
     super.dispose();
   }
 
@@ -116,9 +138,26 @@ class UserDetailsBloc extends BaseBloc {
   }
 
   ///
+  loadUserAlbums() {
+    _albums = user!.albums?.toList();
+    if (_albums != null && _albums!.isNotEmpty) {
+      _albumsController?.sink.add(_albums);
+    } else {
+      _downloadUserAlbums();
+    }
+  }
+
+  ///
   _downloadUserPosts() {
     final request = UserPostsRequest((builder) => builder..userId = userId);
     // Выполяем запрос.
     store?.actions.userScreen.userPostsRequest(request);
+  }
+
+  ///
+  _downloadUserAlbums() {
+    final request = UserAlbumsRequest((builder) => builder..userId = userId);
+    // Выполяем запрос.
+    store?.actions.userScreen.userAlbumsRequest(request);
   }
 }

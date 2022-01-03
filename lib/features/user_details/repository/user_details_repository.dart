@@ -117,7 +117,9 @@ UserAlbumsResponse userAlbumsMapRestBundle(RestBundle bundle) {
       ..message = bundle.data.toString());
   }
   try {
-    UserAlbumsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecode(bundle.data ?? ''));
+    final jsonDecoded = {"albums": jsonDecode(bundle.data ?? '')};
+
+    UserAlbumsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecoded);
     return response.rebuild((builder) => builder.httpCode = bundle.status);
   } catch (err) {
     logger.e('userAlbumsMapRestBundle $err');

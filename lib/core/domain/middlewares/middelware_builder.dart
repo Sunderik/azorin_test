@@ -24,5 +24,6 @@ final List<
   createEpicMiddleware([
     _usersListEpic.usersListEpic,
     _userDetailsEpic.userPostsEpic,
+    _userDetailsEpic.userAlbumsEpic,
   ])
 ];
