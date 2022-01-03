@@ -47,7 +47,7 @@ class _UsersListScreenViewState extends State<UsersListScreenView> {
                     builder: (context, snapshot) {
                       final team = bloc.users;
                       if (team != null && team.isNotEmpty && status != ScreenStatusEnum.loading) {
-                        return const TeamListContent();
+                        return const UsersListContent();
                       } else if (team != null && team.isEmpty && status != ScreenStatusEnum.wait) {
                         return Center(
                           child: Text(

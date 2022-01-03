@@ -1,8 +1,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
-import 'package:azorin_test/features/user_details/domain/domain.dart';
-import 'package:azorin_test/features/user_details/repository/models/_models.dart';
+import 'package:azorin_test/features/user_details_screen/domain/domain.dart';
+import 'package:azorin_test/features/user_details_screen/repository/models/_models.dart';
 import 'package:collection/collection.dart';
 
 ///

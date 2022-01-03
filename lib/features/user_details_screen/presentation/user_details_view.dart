@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:azorin_test/core/core.dart';
-import 'package:azorin_test/features/user_details/presentation/presentation.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/_widgets.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/presentation.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/widgets/_widgets.dart';
 
 ///
 class UserDetailsView extends StatefulWidget {

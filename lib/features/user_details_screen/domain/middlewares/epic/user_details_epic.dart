@@ -5,9 +5,9 @@ import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/core/library/logger/logger.dart';
-import 'package:azorin_test/features/user_details/domain/domain.dart';
-import 'package:azorin_test/features/user_details/repository/models/_models.dart';
-import 'package:azorin_test/features/user_details/repository/user_details_repository.dart';
+import 'package:azorin_test/features/user_details_screen/domain/domain.dart';
+import 'package:azorin_test/features/user_details_screen/repository/models/_models.dart';
+import 'package:azorin_test/features/user_details_screen/repository/user_details_repository.dart';
 
 ///
 @Injectable()

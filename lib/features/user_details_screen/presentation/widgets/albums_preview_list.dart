@@ -1,5 +1,5 @@
 import 'package:azorin_test/core/domain/models/album.dart';
-import 'package:azorin_test/features/user_details/presentation/user_details_bloc.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/user_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

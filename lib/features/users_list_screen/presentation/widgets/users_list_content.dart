@@ -5,14 +5,14 @@ import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/users_list_screen/presentation/users_list_screen_bloc.dart';
 import 'package:azorin_test/features/users_list_screen/presentation/widgets/users_list_item.dart';
 ///
-class TeamListContent extends StatefulWidget {
-  const TeamListContent({Key? key}) : super(key: key);
+class UsersListContent extends StatefulWidget {
+  const UsersListContent({Key? key}) : super(key: key);
 
   @override
-  _TeamListContentState createState() => _TeamListContentState();
+  _UsersListContentState createState() => _UsersListContentState();
 }
 ///
-class _TeamListContentState extends State<TeamListContent> {
+class _UsersListContentState extends State<UsersListContent> {
   ///
   UsersListScreenBloc get bloc => Provider.of<UsersListScreenBloc>(context, listen: false);
 
@@ -30,7 +30,7 @@ class _TeamListContentState extends State<TeamListContent> {
           return ListView.builder(
               itemCount: users?.length ?? 0,
               itemBuilder: (BuildContext context, int index) {
-                return TeamListItem(user: users![index], onTap: () => {bloc.openUserInfo(users[index])});
+                return UsersListItem(user: users![index], onTap: () => {bloc.openUserInfo(users[index])});
               });
         });
   }

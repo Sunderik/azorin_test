@@ -1,6 +1,6 @@
 import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
-import 'package:azorin_test/features/user_details/repository/models/_models.dart';
+import 'package:azorin_test/features/user_details_screen/repository/models/_models.dart';
 
 part 'user_details_actions.g.dart';
 

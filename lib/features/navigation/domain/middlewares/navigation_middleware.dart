@@ -1,6 +1,6 @@
 import 'package:azorin_test/core/domain/domain.dart';
-import 'package:azorin_test/features/user_details/presentation/user_details_screen.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/map_view.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/user_details_screen.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/widgets/map_view.dart';
 import 'package:azorin_test/features/users_list_screen/presentation/users_list_screen.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:flutter/material.dart' hide Action;

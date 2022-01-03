@@ -22,7 +22,7 @@ abstract class UsersListRepository {
 
 ///
 @Injectable(as: UsersListRepository)
-class TeamRepositoryImpl with IsolateManagerMixin implements UsersListRepository {
+class UsersRepositoryImpl with IsolateManagerMixin implements UsersListRepository {
   ///
   final StoreProvider _storeProvider = injector.get<StoreProvider>();
 
@@ -35,7 +35,7 @@ class TeamRepositoryImpl with IsolateManagerMixin implements UsersListRepository
   ///
   late final UrlFactory _urlFactory;
 
-  TeamRepositoryImpl(this._restService, this._urlFactory);
+  UsersRepositoryImpl(this._restService, this._urlFactory);
 
   @override
   Stream<UsersResponse> makeUsersRequest({Duration? timeout = const Duration(seconds: 20)}) {

@@ -1,8 +1,8 @@
 import 'package:azorin_test/core/core.dart';
 
 import 'package:azorin_test/features/navigation/navigation.dart';
-import 'package:azorin_test/features/user_details/domain/middlewares/epic/user_details_epic.dart';
-import 'package:azorin_test/features/user_details/domain/middlewares/user_details_middleware.dart';
+import 'package:azorin_test/features/user_details_screen/domain/middlewares/epic/user_details_epic.dart';
+import 'package:azorin_test/features/user_details_screen/domain/middlewares/user_details_middleware.dart';
 import 'package:azorin_test/features/users_list_screen/domain/middlewares/epics/users_list_epic.dart';
 import 'package:azorin_test/features/users_list_screen/domain/middlewares/users_list_middleware.dart';
 import 'package:azorin_test/injection.dart';

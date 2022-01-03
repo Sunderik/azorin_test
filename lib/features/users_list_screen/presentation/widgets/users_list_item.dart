@@ -1,14 +1,14 @@
 import 'package:azorin_test/core/core.dart';
 import 'package:flutter/material.dart';
 ///
-class TeamListItem extends StatelessWidget {
+class UsersListItem extends StatelessWidget {
   /// Объект исполнителя.
   final User user;
 
   /// Действие по нажатию.
   final Function() onTap;
 
-  const TeamListItem({Key? key, required this.user, required this.onTap}) : super(key: key);
+  const UsersListItem({Key? key, required this.user, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

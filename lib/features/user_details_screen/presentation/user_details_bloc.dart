@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:azorin_test/core/bloc/base_bloc.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/core/domain/models/post.dart';
-import 'package:azorin_test/features/user_details/repository/models/_models.dart';
+import 'package:azorin_test/features/user_details_screen/repository/models/_models.dart';
 import 'package:built_collection/built_collection.dart';
 
 ///

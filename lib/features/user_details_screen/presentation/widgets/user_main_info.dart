@@ -1,5 +1,5 @@
 import 'package:azorin_test/core/library/dialogs/connection_dialogs.dart';
-import 'package:azorin_test/features/user_details/presentation/widgets/info_row.dart';
+import 'package:azorin_test/features/user_details_screen/presentation/widgets/info_row.dart';
 import 'package:flutter/material.dart';
 
 ///

@@ -12,9 +12,9 @@ import 'core/core.dart' as _i8;
 import 'core/di/provider/store_provider.dart' as _i5;
 import 'core/network/service/rest_service.dart' as _i3;
 import 'core/network/url_factory.dart' as _i6;
-import 'features/user_details/domain/middlewares/epic/user_details_epic.dart'
+import 'features/user_details_screen/domain/middlewares/epic/user_details_epic.dart'
     as _i10;
-import 'features/user_details/repository/user_details_repository.dart' as _i7;
+import 'features/user_details_screen/repository/user_details_repository.dart' as _i7;
 import 'features/users_list_screen/domain/middlewares/epics/users_list_epic.dart'
     as _i11;
 import 'features/users_list_screen/repository/users_list_repository.dart'
@@ -31,7 +31,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i7.UserDetailsRepository>(() => _i7.UserDetailsRepositoryImpl(
       get<_i3.RestService>(), get<_i8.UrlFactory>()));
   gh.factory<_i9.UsersListRepository>(() =>
-      _i9.TeamRepositoryImpl(get<_i3.RestService>(), get<_i8.UrlFactory>()));
+      _i9.UsersRepositoryImpl(get<_i3.RestService>(), get<_i8.UrlFactory>()));
   gh.factory<_i10.UserDetailsEpic>(
       () => _i10.UserDetailsEpic(get<_i7.UserDetailsRepository>()));
   gh.factory<_i11.UsersListEpic>(
