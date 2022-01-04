@@ -14,4 +14,6 @@ abstract class NavigationState implements Built<NavigationState, NavigationState
 
   @BuiltValueField(serialize: false)
   GlobalKey<NavigatorState>? get rootNavigatorKey;
+
+  static Serializer<NavigationState> get serializer => _$navigationStateSerializer;
 }

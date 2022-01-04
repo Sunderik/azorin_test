@@ -24,6 +24,9 @@ abstract class AppActions extends ReduxActions {
   late ActionDispatcher<void> setTheme;
 
   ///
+  late ActionDispatcher<void> saveState;
+
+  ///
   NavigationActions get navigation;
 
   ///

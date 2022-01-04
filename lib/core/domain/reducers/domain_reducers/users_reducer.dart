@@ -15,7 +15,9 @@ NestedReducerBuilder<AppState, AppStateBuilder, UsersState, UsersStateBuilder> c
 }
 ///
 void _setUsers(UsersState state, Action<BuiltList<User>> action, UsersStateBuilder builder) {
+  //
   builder.users.replace(action.payload);
+
 }
 ///
 void _clear(UsersState state, Action<void> action, UsersStateBuilder builder) {

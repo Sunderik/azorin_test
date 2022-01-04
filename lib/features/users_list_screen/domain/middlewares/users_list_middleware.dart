@@ -19,13 +19,17 @@ void _usersRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, nex
 void _setUsersResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, next, Action<UsersResponse> action) {
   next(action);
 
-  final usersResponse = action.payload;
+  UsersResponse usersResponse = action.payload;
 
   switch (usersResponse.httpCode) {
     case 200:
-      api.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.wait);
-      api.actions.users.setUsers(usersResponse.users!.toBuiltList());
-      break;
+      {
+        api.actions.usersScreen.setUsersListScreenStatus(ScreenStatusEnum.wait);
+        api.actions.users.setUsers(usersResponse.users!.toBuiltList());
+        //сохранение состояния приложения в sharedPreferences
+        api.actions.saveState(null);
+        break;
+      }
     default:
       break;
   }

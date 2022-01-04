@@ -19,4 +19,6 @@ class AppTheme extends EnumClass {
 
   ///
   static AppTheme valueOf(String name) => _$appThemeValueOf(name);
+
+  static Serializer<AppTheme> get serializer => _$appThemeSerializer;
 }

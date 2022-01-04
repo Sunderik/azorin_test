@@ -3,7 +3,6 @@ import 'package:built_redux/built_redux.dart';
 import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/features/user_details_screen/domain/domain.dart';
 import 'package:azorin_test/features/user_details_screen/repository/models/_models.dart';
-import 'package:collection/collection.dart';
 
 ///
 MiddlewareBuilder<AppState, AppStateBuilder, AppActions> userDetailsMiddleware() {
@@ -26,16 +25,27 @@ void _setUserPostsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> 
   next(action);
 
   final UserPostsResponse userPostsResponse = action.payload;
-  User? user = api.state.userDetailsState.user;
-  //переписываем полльзователя добавляя ему посты в стейте окна пользователя
-  User? userUpd = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
-  api.actions.userScreen.setUserDetails(userUpd!);
-  //переписываем полльзователя добавляя ему посты в стейте пользователей
-  List<User> _users = api.state.usersState.users.toList();
-  var index = _users.indexOf(user!);
-  _users.removeAt(index);
-  _users.insert(index, userUpd);
-  api.actions.users.setUsers(_users.toBuiltList());
+
+  switch (userPostsResponse.httpCode) {
+    case 200:
+      {
+        User? user = api.state.userDetailsState.user;
+        //переписываем полльзователя добавляя ему посты в стейте окна пользователя
+        User? userUpd = user?.rebuild((b) => b..posts = userPostsResponse.posts!.toBuilder());
+        api.actions.userScreen.setUserDetails(userUpd!);
+        //переписываем полльзователя добавляя ему посты в стейте пользователей
+        List<User> _users = api.state.usersState.users.toList();
+        var index = _users.indexOf(user!);
+        _users.removeAt(index);
+        _users.insert(index, userUpd);
+        api.actions.users.setUsers(_users.toBuiltList());
+        //сохранение состояния приложения в sharedPreferences
+        api.actions.saveState(null);
+        break;
+      }
+    default:
+      break;
+  }
 }
 
 /// Запрос на изменение статуса пользователя.
@@ -50,14 +60,23 @@ void _setUserAlbumsResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions>
   next(action);
 
   final UserAlbumsResponse userAlbumsResponse = action.payload;
-  User? user = api.state.userDetailsState.user;
-  //переписываем полльзователя добавляя ему посты в стейте окна пользователя
-  User? userUpd = user?.rebuild((b) => b..albums = userAlbumsResponse.albums!.toBuilder());
-  api.actions.userScreen.setUserDetails(userUpd!);
-  //переписываем полльзователя добавляя ему посты в стейте пользователей
-  List<User> _users = api.state.usersState.users.toList();
-  var index = _users.indexOf(user!);
-  _users.removeAt(index);
-  _users.insert(index, userUpd);
-  api.actions.users.setUsers(_users.toBuiltList());
+  switch (userAlbumsResponse.httpCode) {
+    case 200:
+      {
+        User? user = api.state.userDetailsState.user;
+        //переписываем полльзователя добавляя ему посты в стейте окна пользователя
+        User? userUpd = user?.rebuild((b) => b..albums = userAlbumsResponse.albums!.toBuilder());
+        api.actions.userScreen.setUserDetails(userUpd!);
+        //переписываем полльзователя добавляя ему посты в стейте пользователей
+        List<User> _users = api.state.usersState.users.toList();
+        var index = _users.indexOf(user!);
+        _users.removeAt(index);
+        _users.insert(index, userUpd);
+        api.actions.users.setUsers(_users.toBuiltList()); //сохранение состояния приложения в sharedPreferences
+        api.actions.saveState(null);
+        break;
+      }
+    default:
+      break;
+  }
 }

@@ -118,7 +118,6 @@ UserAlbumsResponse userAlbumsMapRestBundle(RestBundle bundle) {
   }
   try {
     final jsonDecoded = {"albums": jsonDecode(bundle.data ?? '')};
-
     UserAlbumsResponse response = serializers.deserializeWith(bundle.serializer!, jsonDecoded);
     return response.rebuild((builder) => builder.httpCode = bundle.status);
   } catch (err) {

@@ -7,9 +7,9 @@ import 'injection.config.dart';
 final injector = GetIt.instance;
 ///
 @injectableInit
-void configureInjection(String environment) {
+Future<void> configureInjection(String environment) async {
   injector.registerFactory(() => Client());
-  $initGetIt(injector, environment: environment);
+  await $initGetIt(injector, environment: environment);
 }
 
 abstract class Env {
