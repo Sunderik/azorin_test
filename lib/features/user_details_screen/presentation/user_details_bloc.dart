@@ -159,7 +159,15 @@ class UserDetailsBloc extends BaseBloc {
   }
 
   ///
-  openAlbumsList() {}
+  openAlbumsList() {
+    logger.i('Opening AlbumsList for user with id:$userId');
+    final bundle = {'userId': userId};
+    actions.navigation.routeTo(
+      AppRoute((builder) => builder
+        ..route = Routes.albumsList
+        ..bundle = bundle),
+    );
+  }
 
   ///
   _downloadUserPosts() {

@@ -1,4 +1,5 @@
 import 'package:azorin_test/core/domain/domain.dart';
+import 'package:azorin_test/features/albums_list_screen/presentation/albums_list_screen.dart';
 import 'package:azorin_test/features/posts_list_screen/presentation/posts_list_screen.dart';
 import 'package:azorin_test/features/user_details_screen/presentation/user_details_screen.dart';
 import 'package:azorin_test/features/user_details_screen/presentation/widgets/map_view.dart';
@@ -50,6 +51,15 @@ void routeTo(
       rootNavigator!.push(
         MaterialPageRoute(
           builder: (context) => PostsListScreen(userId: userId),
+          settings: RouteSettings(name: payload.route.name),
+        ),
+      );
+      break;
+    case Routes.albumsList:
+      final int userId = (payload.bundle as Map<String, dynamic>)['userId']!;
+      rootNavigator!.push(
+        MaterialPageRoute(
+          builder: (context) => AlbumsListScreen(userId: userId),
           settings: RouteSettings(name: payload.route.name),
         ),
       );

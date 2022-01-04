@@ -23,6 +23,7 @@ void _clearAppState(AppState state, Action<void> action, AppStateBuilder builder
     ..usersState = UsersState().toBuilder()
     ..usersListState = UsersListScreenState().toBuilder()
     ..postsListState = PostsListScreenState().toBuilder()
+    ..albumsListState = AlbumsListScreenState().toBuilder()
     ..userDetailsState = UserDetailsState().toBuilder();
 }
 

@@ -2,7 +2,9 @@ import 'package:azorin_test/core/core.dart';
 import 'package:azorin_test/core/domain/global_state/domain_states/users_state.dart';
 import 'package:azorin_test/core/domain/serializers/serializers.dart';
 
+
 import 'package:azorin_test/features/navigation/navigation.dart';
+import 'package:azorin_test/features/albums_list_screen/domain/albums_list_state.dart';
 import 'package:azorin_test/features/posts_list_screen/domain/posts_list_state.dart';
 import 'package:azorin_test/features/users_list_screen/domain/users_list_state.dart';
 import 'package:built_value/built_value.dart';
@@ -39,6 +41,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   ///
   PostsListScreenState get postsListState;
+
+  ///
+  AlbumsListScreenState get albumsListState;
 
   ///
   UserDetailsState get userDetailsState;

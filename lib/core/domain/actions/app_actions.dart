@@ -1,3 +1,4 @@
+import 'package:azorin_test/features/albums_list_screen/domain/actions/albums_list_actions.dart';
 import 'package:built_redux/built_redux.dart';
 
 import 'package:azorin_test/core/domain/actions/domain_actions/users_actions.dart';
@@ -33,6 +34,9 @@ abstract class AppActions extends ReduxActions {
 
   ///
   PostsListScreenActions get postsScreen;
+
+  ///
+  AlbumsListScreenActions get albumsScreen;
 
   ///
   UserDetailsActions get userScreen;
