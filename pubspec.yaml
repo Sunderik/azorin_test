@@ -1,8 +1,6 @@
 name: azorin_test
 description: Презентационный проект отражающий навыки работы и понимание Flutter
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
@@ -22,7 +20,14 @@ dependencies:
 
   built_value: 8.0.6
   built_collection: 5.0.0
-  freezed_annotation: ^0.14.0
+
+  provider: ^5.0.0
+  rxdart: ^0.26.0
+
+  injectable: ^1.4.1 # DI generator
+  get_it: ^7.0.0 # DI
+
+  uuid: ^3.0.5 # для изолятов и потоков
 
   #Forks for migrate_to_null_safety
   built_redux:
@@ -34,30 +39,15 @@ dependencies:
       url: https://github.com/Sunderik/flutter_built_redux.git
       ref: master
 
-  logger: ^1.0.0
+  logger: ^1.0.0 # оформление и  данных
 
-  provider: ^5.0.0
-
-  rxdart: ^0.26.0
-
-  injectable: ^1.4.1 #DI generator
-  get_it: ^7.0.0 #DI
-
-  shared_preferences: ^2.0.4 # token, userinfo etc store
-
-  cached_network_image: ^3.0.0 # to show images from the internet and keep them in the cache directory
-
-  redux_persist: ^0.9.0 #no web
-  redux_persist_flutter: ^0.9.0 #no web
+  shared_preferences: ^2.0.4 # кеширование данных
 
   http: ^0.13.3 # http requests
 
-  collection: ^1.15.0 # The package contains functions that operate on lists.
-
-  url_launcher: # for url
-  flutter_map: ^0.13.1
-
-  carousel_slider: ^4.0.0
+  url_launcher: # для открытия програм по умолчанию
+  flutter_map: ^0.13.1 # для использования карты
+  carousel_slider: ^4.0.0 # слайдер для виджетов
 
 dev_dependencies:
   flutter_test:
@@ -65,14 +55,12 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   mockito: ^5.0.9
   build_runner: ^2.1.1
-  freezed: ^0.14.0
   built_value_generator: ^8.0.6
   pedantic: ^1.9.2
   injectable_generator: ^1.4.1
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/
     - assets/images/
