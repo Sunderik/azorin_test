@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Темная тема приложения
 ThemeData darkTheme(context) {
   return ThemeData(
     fontFamily: 'GoogleSansRegular',
@@ -11,16 +12,16 @@ ThemeData darkTheme(context) {
     cardColor: Color(0xff1f2124),
     canvasColor: Colors.black,
     brightness: Brightness.dark,
-    buttonTheme: Theme.of(context).buttonTheme.copyWith(
-        colorScheme: ColorScheme.dark(),
-        buttonColor: Colors.blue,
-        splashColor: Colors.black),
-    appBarTheme: AppBarTheme(
+    buttonTheme: Theme.of(context)
+        .buttonTheme
+        .copyWith(colorScheme: ColorScheme.dark(), buttonColor: Colors.blue, splashColor: Colors.black),
+    appBarTheme: const AppBarTheme(
       elevation: 0.0,
     ),
   );
 }
 
+/// Светлая тема приложения
 ThemeData lightTheme(context) {
   return ThemeData(
       fontFamily: 'Roboto',
@@ -33,20 +34,17 @@ ThemeData lightTheme(context) {
       cursorColor: _darkGrey,
       brightness: Brightness.light,
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          colorScheme: ColorScheme.light(),
+          colorScheme: const ColorScheme.light(),
           buttonColor: _mainBlue,
           textTheme: ButtonTextTheme.primary,
           splashColor: Colors.white),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(animationDuration: Duration(seconds: 1))),
-      appBarTheme: AppBarTheme(
+      elevatedButtonTheme: const ElevatedButtonThemeData(style: ButtonStyle(animationDuration: Duration(seconds: 1))),
+      appBarTheme: const AppBarTheme(
         elevation: 4.0,
       ),
       textTheme: Theme.of(context).textTheme.copyWith(
-          bodyText1:
-              TextStyle(color: darkText, fontFamily: "Roboto", fontSize: 16),
-          headline6: TextStyle(
-              color: Colors.white, fontFamily: "Roboto", fontSize: 24)));
+          bodyText1: const TextStyle(color: darkText, fontFamily: "Roboto", fontSize: 16),
+          headline6: const TextStyle(color: Colors.white, fontFamily: "Roboto", fontSize: 24)));
 }
 
 const Color _mainBlue = Color(0xFF1664A7);

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Тип перехода.
+///
+/// Возврат на предыдущий экран.
 class BackSlideRoute extends PageRouteBuilder {
   final Widget enterPage;
   final Widget? exitPage;
@@ -23,14 +26,14 @@ class BackSlideRoute extends PageRouteBuilder {
               Stack(
             children: <Widget>[
               SlideTransition(
-                position: new Tween<Offset>(
+                position: Tween<Offset>(
                   begin: const Offset(0.0, 0.0),
                   end: const Offset(-1.0, 0.0),
                 ).animate(animation),
                 child: exitPage,
               ),
               SlideTransition(
-                position: new Tween<Offset>(
+                position: Tween<Offset>(
                   begin: const Offset(1.0, 0.0),
                   end: Offset.zero,
                 ).animate(animation),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Тип перехода.
+///
+/// Окрыть независимый экран.
 class FadeRoute extends PageRouteBuilder {
   final Widget page;
   final RouteSettings settings;

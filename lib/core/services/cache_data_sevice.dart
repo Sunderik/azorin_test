@@ -10,16 +10,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///Сервис для работы с файлом хранящим неотправленные запросы
 @singleton
 class CacheDataService {
-  ///
+  /// Ключ для хранения состояния приложения в [SharedPreferences]
   static const _dataKey = 'APP_DATA_KEY';
 
-  ///
+  /// Инициализированный обьект [SharedPreferences]
   static final _prefs = injector.get<SharedPreferences>();
 
-  ///
+  /// Провайдер харнилища приложения
   final StoreProvider _storeProvider = injector.get<StoreProvider>();
 
-  ///
+  /// Запись данных в [SharedPreferences] по ключу [_dataKey].
   Future<void> setData() async {
     try {
       var _jsonMap = _storeProvider.store!.state.toJson();
@@ -30,7 +30,7 @@ class CacheDataService {
     }
   }
 
-  ///
+  /// Получение данных из [SharedPreferences] по ключу [_dataKey].
   Future<AppState?> getData<T>() async {
     try {
       String _jsonString = '';
@@ -42,7 +42,7 @@ class CacheDataService {
     }
   }
 
-  ///
+  /// Проверка наличия  данных в [SharedPreferences] по ключу [_dataKey].
   Future<bool> checkData() async {
     try {
       return _prefs.containsKey(_dataKey);
@@ -51,8 +51,8 @@ class CacheDataService {
     }
   }
 
-  ///
-  Future<void> clearFile() async {
+  /// Очистка данных в [SharedPreferences] по ключу [_dataKey].
+  Future<void> clearData() async {
     try {
       await _prefs.remove(_dataKey);
     } catch (e) {

@@ -13,11 +13,11 @@ import 'package:built_value/serializer.dart';
 
 part 'app_state.g.dart';
 
-///
+/// Базовый стейт приложения.
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   AppState._();
 
-  ///
+  /// Фабрика базового стейта.
   factory AppState([void Function(AppStateBuilder)? updates]) {
     return _$AppState((b) => b
       ..appTheme = AppTheme.light
@@ -28,25 +28,25 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..userDetailsState = UserDetailsState().toBuilder());
   }
 
-  ///
+  /// Свойство темы приложения.
   AppTheme get appTheme;
 
-  ///
+  /// Стейт навигации.
   NavigationState get navigationState;
 
-  ///
+  /// Стейт пользователей.
   UsersState get usersState;
 
-  ///
+  /// Стейт окна списка пользователей.
   UsersListScreenState get usersListState;
 
-  ///
+  /// Сейт окна списка постов пользователя.
   PostsListScreenState get postsListState;
 
-  ///
+  /// Сейт окна списка альбомов пользователя.
   AlbumsListScreenState get albumsListState;
 
-  ///
+  /// Сейт окна информации о пользователе.
   UserDetailsState get userDetailsState;
 
   ///
@@ -54,7 +54,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     return mainSerializers.serializeWith(AppState.serializer, this) as Map<String, dynamic>;
   }
 
-  ///
+  /// Конвертировать стейт из карты [json] в модель состояния [AppState].
   static AppState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -63,6 +63,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     }
   }
 
-  ///
+  /// Сериализатор состояния.
   static Serializer<AppState> get serializer => _$appStateSerializer;
 }

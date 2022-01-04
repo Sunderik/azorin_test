@@ -5,7 +5,7 @@ import 'package:built_value/standard_json_plugin.dart';
 
 part 'serializers.g.dart';
 
-///
+/// Базовый сериализатор приложения, для стейтов и базовых моделей.
 @SerializersFor([
   AppState,
   UsersState,
@@ -20,7 +20,4 @@ part 'serializers.g.dart';
   Post,
   Album
 ])
-final Serializers mainSerializers = (_$mainSerializers.toBuilder()
-      ..add(DateTimeSerializer())
-      ..addPlugin(StandardJsonPlugin()))
-    .build();
+final Serializers mainSerializers = (_$mainSerializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

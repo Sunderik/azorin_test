@@ -4,6 +4,7 @@ import 'package:built_redux/built_redux.dart';
 import 'package:built_value/built_value.dart';
 import 'package:rxdart/rxdart.dart';
 
+///Это малопонятная магия
 typedef Epic<V extends Built<V, B>, B extends Builder<V, B>,
 A extends ReduxActions>
 = Stream Function(

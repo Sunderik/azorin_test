@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Тип перехода.
+///
+/// Окрыть логически дочерний экран.
 class RightSlideRoute extends PageRouteBuilder {
   final Widget page;
   final RouteSettings settings;

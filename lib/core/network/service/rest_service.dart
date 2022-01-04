@@ -6,22 +6,21 @@ import 'package:azorin_test/core/network/models/network_serializers.dart';
 import 'package:azorin_test/core/library/logger/logger.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 
 const _methodPost = 'POST';
 const _methodGet = 'GET';
 
-///
+/// Интерфейс сервиса отправки запросов
 abstract class RestService {
-  ///
+  /// Отправить базовый запрос на получение данных
   Future<RESP> get<RESP>(
     Uri path, {
     Map<String, dynamic> queryParameters,
   });
 
-  ///
+  /// Отправить запрос на получение данных в виде строки
   Future<RESP> getStringRequest<RESP>(
     Uri path, {
     Map<String, dynamic>? queryParameters,
@@ -29,40 +28,40 @@ abstract class RestService {
     Map<String, String>? headers,
   });
 
-  ///
+  /// Отправить базовый запрос на запись данных
   Future<RESP> post<RESP>(Uri path, Built request, {Serializer? deserializer, Map<String, String>? headers});
 
-  ///
+  /// Отправить запрос на запись данных в виде строки
   Future<RESP> postStringRequest<RESP>(Uri url, String stringRequest,
       {Serializer? deserializer, Map<String, String>? headers});
 
-  ///
+  /// Использующиеся интерсепторы.
   Map<int, Interceptor> get interceptors;
 
-  ///
+  /// Изменение статуса логирования
   void setLoggingEnabled(bool isEnabled, {bool stripBody});
 
-  ///
+  /// Долбавить инетерсептор [interceptor] по ключу [order]
   void addInterceptor(int order, Interceptor interceptor);
 
-  ///
+  /// Удалить интерсептор [interceptor]
   void removeInterceptor(Interceptor interceptor);
 }
 
-///
+/// Реализация сетевого сервиса отправки запросов [RestService]
 @Injectable(as: RestService)
 class RestServiceImpl implements RestService {
   RestServiceImpl(
     this.client,
   );
 
-  ///
+  /// Http клиент
   final Client client;
 
-  ///
+  /// Включение логиролвания запросов и ответов
   bool _isLoggingEnabled = true;
 
-  ///
+  /// Влючение в логирование тело ответа и запроса
   final bool _debugBody = false;
 
   @override
@@ -197,7 +196,7 @@ class RestServiceImpl implements RestService {
     }
   }
 
-  ///
+  /// Подписание запроса.
   void _interceptRequest(request) {
     try {
       final sortedInterceptors = interceptors.keys.toList()..sort();
@@ -207,7 +206,7 @@ class RestServiceImpl implements RestService {
     }
   }
 
-  ///
+  /// Выввести лог ответа.
   void _printResponseLog(String method, Response response) {
     String logBody = '';
     logBody += '$method ${response.request!.url}';
@@ -219,7 +218,7 @@ class RestServiceImpl implements RestService {
     logger.v(logBody);
   }
 
-  ///
+  /// Вывести лог запроса.
   void _printRequestLog(String method, Request request) {
     String logBody = '';
     logBody += '$method ${request.url}';

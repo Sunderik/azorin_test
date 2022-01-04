@@ -6,11 +6,9 @@ import 'package:azorin_test/core/core.dart';
 import '_models.dart';
 
 part 'serializers.g.dart';
+
 ///
 @SerializersFor([
   UsersResponse,
 ])
-final Serializers serializers = (_$serializers.toBuilder()
-      ..add(DateTimeSerializer())
-      ..addPlugin(StandardJsonPlugin()))
-    .build();
+final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

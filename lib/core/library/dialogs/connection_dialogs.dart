@@ -105,7 +105,7 @@ void _copySite(String site) {
   //   message: 'e-mail скопирован в буфер обмена',
   // );
 }
-
+/// Метод отображения диалога на экране.
 void _showDialogConnection(
     {required BuildContext context,
     required Function() onPressedConnection,
