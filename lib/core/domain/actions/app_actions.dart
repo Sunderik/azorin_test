@@ -1,8 +1,12 @@
+import 'package:built_redux/built_redux.dart';
+
 import 'package:azorin_test/core/domain/actions/domain_actions/users_actions.dart';
 import 'package:azorin_test/features/navigation/navigation.dart';
+import 'package:azorin_test/features/posts_list_screen/domain/actions/posts_list_actions.dart';
 import 'package:azorin_test/features/user_details_screen/domain/actions/user_details_actions.dart';
 import 'package:azorin_test/features/users_list_screen/domain/actions/users_list_actions.dart';
-import 'package:built_redux/built_redux.dart';
+
+
 
 part 'app_actions.g.dart';
 
@@ -26,6 +30,9 @@ abstract class AppActions extends ReduxActions {
 
   ///
   UsersListScreenActions get usersScreen;
+
+  ///
+  PostsListScreenActions get postsScreen;
 
   ///
   UserDetailsActions get userScreen;

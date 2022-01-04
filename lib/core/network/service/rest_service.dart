@@ -209,18 +209,24 @@ class RestServiceImpl implements RestService {
 
   ///
   void _printResponseLog(String method, Response response) {
-    debugPrint('$method ${response.request!.url}');
-    debugPrint('status: ${response.statusCode}');
-    debugPrint('content length: ${response.contentLength}');
-    if (_debugBody) {
-      debugPrint('body: ${response.body}');
+    String logBody = '';
+    logBody += '$method ${response.request!.url}';
+    logBody += '\nstatus: ${response.statusCode}';
+    logBody += '\ncontent length: ${response.contentLength}';
+    if (_debugBody && response.body.isNotEmpty) {
+      logBody += '\nbody: ${response.body}';
     }
+    logger.v(logBody);
   }
 
   ///
   void _printRequestLog(String method, Request request) {
-    debugPrint('$method ${request.url}');
-    request.headers.forEach((key, value) => debugPrint('$key: $value'));
-    debugPrint('body: ${request.body}');
+    String logBody = '';
+    logBody += '$method ${request.url}';
+    request.headers.forEach((key, value) => logBody += '\n$key: $value');
+    if (_debugBody && request.body.isNotEmpty) {
+      logBody += '\nbody: ${request.body}';
+    }
+    logger.v(logBody);
   }
 }

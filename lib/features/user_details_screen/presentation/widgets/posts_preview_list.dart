@@ -31,7 +31,7 @@ class PostPreviewList extends StatelessWidget {
             return Card(
               child: Column(
                 children: [
-                  _getCardHeader(),
+                  _getCardHeader(bloc),
                   const Divider(indent: 8, endIndent: 8),
                   _getCardContent(posts),
                 ],
@@ -43,21 +43,24 @@ class PostPreviewList extends StatelessWidget {
   }
 
   ///
-  Widget _getCardHeader() {
+  Widget _getCardHeader(UserDetailsBloc bloc) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Text(
+        children: [
+          const Text(
             'Posts',
             style: TextStyle(fontSize: 16),
           ),
-          Chip(
-            label: Text('ALL'),
-            labelStyle: TextStyle(fontSize: 12),
-            useDeleteButtonTooltip: false,
+          GestureDetector(
+            onTap: () => bloc.openPostsList(),
+            child: const Chip(
+              label: Text('ALL'),
+              labelStyle: TextStyle(fontSize: 12),
+              useDeleteButtonTooltip: false,
+            ),
           ),
         ],
       ),

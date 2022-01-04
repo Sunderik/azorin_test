@@ -14,7 +14,6 @@ class AuthInterceptor implements Interceptor {
 
   @override
   BaseRequest intercept(BaseRequest request) {
-    debugPrint('${_storeProvider.hashCode}');
     request.headers.update('content-type', (update) => contentTypeHeader, ifAbsent: () => contentTypeHeader);
     return request;
   }

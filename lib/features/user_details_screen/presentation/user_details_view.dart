@@ -32,7 +32,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
               final screenStatus = snapshot.data;
 
               if (screenStatus == null) {
-                return _getRefreshIndicator(child: _getErrorScreenView());
+                return _getErrorScreenView();
               }
 
               switch (screenStatus) {
@@ -44,28 +44,15 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                 case ScreenStatusEnum.wait:
                   final data = bloc.user;
                   if (data == null) {
-                    return _getRefreshIndicator(child: _getErrorScreenView());
+                    return _getErrorScreenView();
                   }
-                  return _getRefreshIndicator(child: _getWaitScreenView(user: data));
+                  return _getWaitScreenView(user: data);
                 case ScreenStatusEnum.fail:
                 default:
-                  return _getRefreshIndicator(child: _getErrorScreenView());
+                  return _getErrorScreenView();
               }
             }),
       ),
-    );
-  }
-
-  /// Возвращает виджет RefreshIndicator с заданными функциями обновления.
-  ///
-  /// [child] - дочерний виджет.
-  RefreshIndicator _getRefreshIndicator({required Widget child}) {
-    return RefreshIndicator(
-      onRefresh: () async {
-        bloc.clearUserDetails();
-        // bloc.loadUserDetails();
-      },
-      child: child,
     );
   }
 
@@ -142,9 +129,8 @@ class _UserDetailsViewState extends State<UserDetailsView> {
           ),
           const Padding(
             padding: EdgeInsets.all(4.0),
-            child:  AlbumsPreviewList(),
+            child: AlbumsPreviewList(),
           ),
-
         ],
       ),
     );

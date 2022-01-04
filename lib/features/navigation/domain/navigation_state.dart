@@ -2,7 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/widgets.dart' show NavigatorState, GlobalKey;
 
-part 'navigaion_state.g.dart';
+part 'navigation_state.g.dart';
 
 abstract class NavigationState implements Built<NavigationState, NavigationStateBuilder> {
   NavigationState._();
@@ -14,6 +14,4 @@ abstract class NavigationState implements Built<NavigationState, NavigationState
 
   @BuiltValueField(serialize: false)
   GlobalKey<NavigatorState>? get rootNavigatorKey;
-
-  static Serializer<NavigationState> get serializer => _$navigationStateSerializer;
 }

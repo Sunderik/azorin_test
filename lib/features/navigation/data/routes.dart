@@ -7,6 +7,7 @@ class Routes extends EnumClass {
   static const Routes pop = _$pop;
   static const Routes userDetails = _$userDetails;
   static const Routes usersList = _$usersList;
+  static const Routes postsList = _$postsList;
   static const Routes showMap = _$showMap;
 
 

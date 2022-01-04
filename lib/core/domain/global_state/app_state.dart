@@ -3,6 +3,7 @@ import 'package:azorin_test/core/domain/global_state/domain_states/users_state.d
 import 'package:azorin_test/core/domain/serializers/serializers.dart';
 
 import 'package:azorin_test/features/navigation/navigation.dart';
+import 'package:azorin_test/features/posts_list_screen/domain/posts_list_state.dart';
 import 'package:azorin_test/features/users_list_screen/domain/users_list_state.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,6 +21,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..navigationState = NavigationState((builder) => builder).toBuilder()
       ..usersState = UsersState().toBuilder()
       ..usersListState = UsersListScreenState().toBuilder()
+      ..postsListState = PostsListScreenState().toBuilder()
       ..userDetailsState = UserDetailsState().toBuilder());
   }
 
@@ -34,6 +36,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   ///
   UsersListScreenState get usersListState;
+
+  ///
+  PostsListScreenState get postsListState;
 
   ///
   UserDetailsState get userDetailsState;

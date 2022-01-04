@@ -8,13 +8,11 @@ part 'app_route.g.dart';
 abstract class AppRoute implements Built<AppRoute, AppRouteBuilder> {
   AppRoute._();
 
-  factory AppRoute([updates(AppRouteBuilder buider)]) = _$AppRoute;
+  factory AppRoute([Function(AppRouteBuilder buider) updates]) = _$AppRoute;
 
   Routes get route;
 
   String? get payload;
-
-  String? get screenTitle;
 
   @BuiltValueField(serialize: false)
   BuildContext? get context;

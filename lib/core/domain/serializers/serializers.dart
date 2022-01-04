@@ -5,7 +5,7 @@ import 'package:built_value/standard_json_plugin.dart';
 
 part 'serializers.g.dart';
 ///
-@SerializersFor([AppState, NavigationState, UsersState, User, Address, Geolocation, Company, Post, Album])
+@SerializersFor([AppState, UsersState, User, Address, Geolocation, Company, Post, Album])
 final Serializers mainSerializers = (_$mainSerializers.toBuilder()
       ..add(DateTimeSerializer())
       ..addPlugin(StandardJsonPlugin()))

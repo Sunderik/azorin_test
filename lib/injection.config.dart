@@ -14,7 +14,8 @@ import 'core/network/service/rest_service.dart' as _i3;
 import 'core/network/url_factory.dart' as _i6;
 import 'features/user_details_screen/domain/middlewares/epic/user_details_epic.dart'
     as _i10;
-import 'features/user_details_screen/repository/user_details_repository.dart' as _i7;
+import 'features/user_details_screen/repository/user_details_repository.dart'
+    as _i7;
 import 'features/users_list_screen/domain/middlewares/epics/users_list_epic.dart'
     as _i11;
 import 'features/users_list_screen/repository/users_list_repository.dart'
