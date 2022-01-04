@@ -6,15 +6,16 @@ import 'package:azorin_test/core/core.dart';
 
 import 'app_starter.dart' as starter;
 
-///
+/// Корневой виджет прложения.
 class TestApp extends StatefulWidget {
+  /// Конструктор корневого виджета прложения.
   const TestApp({Key? key}) : super(key: key);
 
   @override
   _TestAppState createState() => _TestAppState();
 }
 
-///
+/// Корневой стейт прложения.
 class _TestAppState extends State<TestApp> {
   @override
   Widget build(BuildContext context) {
