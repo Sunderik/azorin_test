@@ -1,16 +1,32 @@
-# azorin_test
+-------------------------------------Акуализация flutter--------------------------------------------
+/// Перейти на стабильный канал и скачать актуальную версию
+flutter channel stable && flutter upgrade
+/// Подгрузить пакеты указанные в .yaml
+flutter packages get
 
-Презентационный проект отражающий навыки работы и понимание Flutter
+-------------------------------------Запуск сборки проекта------------------------------------------
+/// Запустить сборку проекта единоразово
+flutter packages pub run build_runner build --delete-conflicting-outputs
+/// Запустить сборку проекта и следить за изменениями
+flutter packages pub run build_runner watch --delete-conflicting-outputs
 
-## Getting Started
+-------------------------------------Запуск создания билда------------------------------------------
+To create a flutter build you need to use:
+/// Очистить существующие былды для android
+flutter clean
+/// Неподписанный совместный билд
+flutter build apk --split-per-abi  
+/// Пакет приложения (для google play) с явным указанием названием и номером билда
+flutter build appbundle --build-name=<build_name> --build-number=<build_code>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-----------------------------Подключение к логам телефона из консоли--------------------------------
+Отладка через logcat:
+/// Перейти в папку
+cd C:\Users\<User>\AppData\Local\Android\Sdk\platform-tools
+/// Если отладка на эмуляторе
+.\adb logcat -s flutter
+/// Если отладка по usb
+/// Узнаем имя телефона
+.\adb devices
+/// Подключаемся к логам телефона
+.\adb logcat -s "<device-name>" flutter
