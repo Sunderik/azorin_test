@@ -18,13 +18,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  built_value: 8.0.6
-  built_collection: 5.0.0
+  built_value: 8.0.6 # иммутабельные классы и кодогенерация
+  built_collection: 5.0.0 # иммутабельные списки и кодогенерация
 
-  provider: ^5.0.0
-  rxdart: ^0.26.0
+  provider: ^5.0.0 # для архитектуры
+  rxdart: ^0.26.0 # для архитектуры
 
-  injectable: ^1.4.1 # DI generator
+  injectable: ^1.4.1 # DI генератор
   get_it: ^7.0.0 # DI
 
   uuid: ^3.0.5 # для изолятов и потоков
