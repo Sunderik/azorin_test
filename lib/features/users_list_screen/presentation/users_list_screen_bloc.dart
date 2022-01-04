@@ -88,6 +88,8 @@ class UsersListScreenBloc extends BaseBloc {
     actions.navigation.routeTo(
       AppRoute((builder) => builder
         ..route = Routes.userDetails
+        ..navigationType = NavigationType.push
+        ..transitionType = TransitionType.rightSlide
         ..bundle = bundle),
     );
   }

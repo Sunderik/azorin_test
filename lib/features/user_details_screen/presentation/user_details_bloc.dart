@@ -154,6 +154,8 @@ class UserDetailsBloc extends BaseBloc {
     actions.navigation.routeTo(
       AppRoute((builder) => builder
         ..route = Routes.postsList
+        ..navigationType = NavigationType.push
+        ..transitionType = TransitionType.rightSlide
         ..bundle = bundle),
     );
   }
@@ -165,6 +167,8 @@ class UserDetailsBloc extends BaseBloc {
     actions.navigation.routeTo(
       AppRoute((builder) => builder
         ..route = Routes.albumsList
+        ..navigationType = NavigationType.push
+        ..transitionType = TransitionType.rightSlide
         ..bundle = bundle),
     );
   }

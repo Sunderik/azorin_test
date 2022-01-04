@@ -29,7 +29,6 @@ class _PostsListScreenViewState extends State<PostsListScreenView> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Посты'),
-          backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: StreamBuilder<ScreenStatusEnum>(
             stream: bloc.postsListScreenStatusController.stream,

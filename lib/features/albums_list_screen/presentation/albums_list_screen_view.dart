@@ -28,8 +28,7 @@ class _AlbumsListScreenViewState extends State<AlbumsListScreenView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Посты'),
-          backgroundColor: Theme.of(context).backgroundColor,
+          title: const Text('Альбомы'),
         ),
         body: StreamBuilder<ScreenStatusEnum>(
             stream: bloc.albumsListScreenStatusController.stream,
@@ -48,7 +47,7 @@ class _AlbumsListScreenViewState extends State<AlbumsListScreenView> {
                           children: [
                             const CircularProgressIndicator(),
                             Container(height: 10.0),
-                            const Text('Загружаем посты пользователя'),
+                            const Text('Загружаем альбомы пользователя'),
                           ],
                         ),
                       );
@@ -57,7 +56,7 @@ class _AlbumsListScreenViewState extends State<AlbumsListScreenView> {
                         if (albums == null || albums.isEmpty) {
                           return Center(
                             child: Text(
-                              'Постов нет',
+                              'Альбомов нет',
                               style: TextStyle(color: Theme.of(context).backgroundColor),
                             ),
                           );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 ///
 class PostsListItem extends StatelessWidget {
-  /// Объект исполнителя.
+  /// Объект поста пользователя.
   final Post post;
 
   /// Действие по нажатию.

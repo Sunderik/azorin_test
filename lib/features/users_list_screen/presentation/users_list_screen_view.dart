@@ -29,7 +29,6 @@ class _UsersListScreenViewState extends State<UsersListScreenView> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Пользователи'),
-          backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: RefreshIndicator(
           color: Theme.of(context).backgroundColor,

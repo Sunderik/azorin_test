@@ -79,6 +79,8 @@ class UserAddressInfo extends StatelessWidget {
     };
     store!.actions.navigation.routeTo(AppRoute((builder) => builder
       ..route = Routes.showMap
+      ..navigationType = NavigationType.push
+      ..transitionType = TransitionType.fade
       ..bundle = bundle));
   }
 }
